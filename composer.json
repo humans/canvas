@@ -1,16 +1,25 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "artisan/canvas",
+    "description": "Artisan Studio's template when creating Laravel projects.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "authors": [
+        {
+            "name": "Jaggy Gauran",
+            "email": "i.am@jag.gy"
+        }
+    ],
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.1.0",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/passport": "^4.0",
+        "laravel/tinker": "~1.0",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.0",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
