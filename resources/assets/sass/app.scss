@@ -1,9 +1,73 @@
+@import '~normalize.css/normalize';
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+/*
+|--------------------------------------------------------------------------
+| Base Configuration
+|--------------------------------------------------------------------------
+|
+| This is where the whole application will depend upon.
+|
+*/
+@import 'base/variables';
+@import 'base/boilerplate';
+@import 'base/typography';
 
-// Variables
-@import "variables";
+/*
+|--------------------------------------------------------------------------
+| Tools
+|--------------------------------------------------------------------------
+|
+| Here is where all the fucntions and mixins would fall into.
+| Feel free to break apart your files when need be.
+|
+*/
+@import 'tools/mixins';
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+/*
+|--------------------------------------------------------------------------
+| Objects
+|--------------------------------------------------------------------------
+|
+| I have no idea how to describe this section. It's yours @joshcerbito!
+|
+*/
+@import 'objects/form';
+@import 'objects/modal';
+
+/*
+|--------------------------------------------------------------------------
+| Layouts
+|--------------------------------------------------------------------------
+|
+| Here's where all the layout elements would be styled.
+|
+*/
+@import 'layouts/header';
+@import 'layouts/footer';
+@import 'layouts/section';
+@import 'layouts/pages';
+
+/*
+|--------------------------------------------------------------------------
+| Components
+|--------------------------------------------------------------------------
+|
+| Something something Vue and or React components.
+|
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Utilities
+|--------------------------------------------------------------------------
+|
+| Utilities come last so they have the freedom to override the previous
+| applied styles, as long as the specificity for the element being tweaked
+| isn't extremely deep.
+|
+| Yeah, I know it's annoying that it's away from all it's siblings from the
+| base/ directory but, I'd rather have it in the same place than give this
+| file it's own lonesome corner.
+|
+*/
+@import 'base/utilities';
