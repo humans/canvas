@@ -100,9 +100,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+
+        'login' => [
+            'exists'   => 'The :input is not in our database.',
         ],
+
     ],
 
     /*
