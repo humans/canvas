@@ -4,16 +4,31 @@ namespace App\Http\Controllers;
 
 class LoginController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return LoginController
+     */
     public function __construct()
     {
         $this->middleware('guest')->except('destroy');
     }
 
+    /**
+     * Show the login form.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         return view('login.create');
     }
 
+    /**
+     * Attempt to log the user in.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store()
     {
         request()->validate([
@@ -28,12 +43,24 @@ class LoginController extends Controller
         return redirect()->intended(route('home'));
     }
 
+    /**
+     * Log the user out.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy()
     {
         auth()->logout();
+
+        return redirect()->route('home');
     }
 
-    private function credentials($request)
+    /**
+     * Get the credentials.
+     *
+     * @return array
+     */
+    private function credentials()
     {
         $field = is_email(request('login')) ? 'email' : 'username';
 
