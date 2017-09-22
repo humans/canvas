@@ -2,9 +2,8 @@
 
 namespace Tests\Feature;
 
-use Compose\Invite;
-use Compose\User;
-use Compose\Events\UserRegistered;
+use App\User;
+use App\Events\UserRegistered;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -17,20 +16,15 @@ class RegisterTest extends TestCase
     {
         parent::setUp();
 
-        $this->invite = factory(Invite::class)->create([
-            'email' => 'i.am@jag.gy'
-        ]);
-
         Event::fake();
     }
 
     function factory(array $attributes = [])
     {
         return $attributes + [
-            'email'    => $this->invite->email,
+            'email'    => 'validemail@email.com',
             'name'     => 'Valid Name',
             'username' => 'validaname',
-            'token'    => $this->invite->token,
 
             'password' => 'some.password@password$$$',
             'password_confirmation' => 'some.password@password$$$',
@@ -40,31 +34,8 @@ class RegisterTest extends TestCase
     /** @test **/
     function invalidate when the invite code doesnt exist()
     {
-        $this->get(route('register', [
-            'token' => 'invalidtoken',
-        ]))->assertStatus(404);
-    }
-
-    /** @test **/
-    function access the page when the invite code is valid()
-    {
-        $invite = factory(Invite::class)->create();
-
-        $this->get(route('register', [
-            'token' => $invite->token
-        ]))->assertStatus(200);
-    }
-
-    /** @test **/
-    function send in the invite to the view()
-    {
-        $invite = factory(Invite::class)->create();
-
-        $this->get(route('register', [
-            'token' => $invite->token
-        ]))->assertViewHas([
-            'invite'
-        ]);
+        $this->get('/register')
+            ->assertStatus(404);
     }
 
     /** @test **/

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use Compose\User;
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
