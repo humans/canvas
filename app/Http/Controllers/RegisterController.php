@@ -34,6 +34,12 @@ class RegisterController extends Controller
      */
     public function store()
     {
+        request()->validate([
+            'name'     => 'required',
+            'email'    => ['required', 'email'],
+            'password' => ['required', 'confirmed', 'min:8'],
+        ]);
+
         auth()->login(
             User::create($this->request())
         );
@@ -48,7 +54,7 @@ class RegisterController extends Controller
      */
     public function request()
     {
-        return request(['name', 'email', 'username']) + [
+        return request(['name', 'email']) + [
             'password' => bcrypt(request('password'))
         ];
     }

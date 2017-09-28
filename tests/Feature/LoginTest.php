@@ -39,22 +39,22 @@ class LoginTest extends TestCase
     }
 
     /** @test **/
-    function password_field_is_required()
-    {
-        $this->post('/login', [
-            'email' => 'existing.email@gmail.com',
-        ])->assertSessionHasErrors([
-            'password' => 'Enter your password.',
-        ]);
-    }
-
-    /** @test **/
     function the_email_field_is_required()
     {
         $this->post('/login', [
             'password' => '12345678'
         ])->assertSessionHasErrors([
             'email' => 'Enter your email address.',
+        ]);
+    }
+
+    /** @test **/
+    function password_field_is_required()
+    {
+        $this->post('/login', [
+            'email' => 'existing.email@gmail.com',
+        ])->assertSessionHasErrors([
+            'password' => 'Enter your password.',
         ]);
     }
 
