@@ -101,8 +101,13 @@ return [
 
     'custom' => [
 
-        'login' => [
-            'exists'   => 'The :input is not in our database.',
+        'email' => [
+            'required' => 'Enter your email address.',
+            'exists'   => 'The email is not in our database.',
+        ],
+
+        'password' => [
+            'required' => 'Enter your password.',
         ],
 
     ],

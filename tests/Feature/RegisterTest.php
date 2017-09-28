@@ -32,14 +32,14 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function invalidate when the invite code doesnt exist()
+    function invalidate_when_the_invite_code_doesnt_exist()
     {
         $this->get('/register')
             ->assertStatus(404);
     }
 
     /** @test **/
-    function create and log the user in on a successful reigstration()
+    function create_and_log_the_user_in_on_a_successful_reigstration()
     {
         $this->post('/register', $this->factory([
             'name'     => 'Jaggy Gauran',
@@ -59,7 +59,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont allow an empty name()
+    function dont_allow_an_empty_name()
     {
         $this->post('/register', $this->factory([
             'name' => null
@@ -67,7 +67,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont allow an empty email()
+    function dont_allow_an_empty_email()
     {
         $this->post('/register', $this->factory([
             'email' => null
@@ -75,7 +75,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont allow an empty username()
+    function dont_allow_an_empty_username()
     {
         $this->post('/register', $this->factory([
             'username' => null
@@ -83,7 +83,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont allow an empty password()
+    function dont_allow_an_empty_password()
     {
         $this->post('/register', $this->factory([
             'password' => null
@@ -91,7 +91,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont allow different passwords()
+    function dont_allow_different_passwords()
     {
         $this->post('/register', $this->factory([
             'password' => 'this is a valid password',
@@ -102,7 +102,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont allow a password shorter than 8 characters()
+    function dont_allow_a_password_shorter_than_8_characters()
     {
         $this->post('/register', $this->factory([
             'password' => 'short',
@@ -113,7 +113,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont allow invalid usernames()
+    function dont_allow_invalid_usernames()
     {
         $this->post('/register', $this->factory([
             'username' => '$massively_invalidT3st--'
@@ -123,7 +123,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont allow invalid emails()
+    function dont_allow_invalid_emails()
     {
         $this->post('/register', $this->factory([
             'email' => 'notanemail'
@@ -133,7 +133,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont allow if the token has already been used()
+    function dont_allow_if_the_token_has_already_been_used()
     {
         $this->invite->update(['accepted_at' => \Carbon\Carbon::now()]);
 
@@ -144,7 +144,7 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont allow if the email doesnt match the token()
+    function dont_allow_if_the_email_doesnt_match_the_token()
     {
         $this->post('/register', $this->factory([
             'email' => 'not.the.same.email@gmail.com',

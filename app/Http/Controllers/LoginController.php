@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\LoginExists;
+
 class LoginController extends Controller
 {
     /**
@@ -31,13 +33,13 @@ class LoginController extends Controller
      */
     public function store()
     {
-        request()->validate([
-            'login'    => ['required', new LoginExists],
+        $credentials = request()->validate([
+            'email'    => ['required', 'exists:users'],
             'password' => 'required',
         ]);
 
-        if (! auth()->attempt($this->credentials($request), true)) {
-            return redirect()->back()->with('error', 'Incorrect username or password.');
+        if (! auth()->attempt($credentials, true)) {
+            return back()->with('error', __('auth.failed'));
         }
 
         return redirect()->intended(route('home'));
@@ -53,20 +55,5 @@ class LoginController extends Controller
         auth()->logout();
 
         return redirect()->route('home');
-    }
-
-    /**
-     * Get the credentials.
-     *
-     * @return array
-     */
-    private function credentials()
-    {
-        $field = is_email(request('login')) ? 'email' : 'username';
-
-        return [
-            $field     => request('login'),
-            'password' => request('password'),
-        ];
     }
 }

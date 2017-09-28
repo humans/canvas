@@ -11,86 +11,61 @@ class LoginTest extends TestCase
     use RefreshDatabase;
 
     /** @test **/
-    function redirect back when credentials are invalid()
+    function redirect_to_the_home_page_when_the_login_is_successful()
     {
         factory(User::class)->create([
-            'email'    => 'brian@nsp.com',
+            'email'    => 'existing.email@gmail.com',
             'password' => bcrypt('password'),
         ]);
 
         $this->post('/login', [
-            'login'    => 'brian@nsp.com',
+            'email'    => 'existing.email@gmail.com',
+            'password' => 'password',
+        ])->assertRedirect('/');
+    }
+
+    /** @test **/
+    function redirect_back_when_credentials_are_invalid()
+    {
+        factory(User::class)->create([
+            'email'    => 'existing.email@gmail.com',
+            'password' => bcrypt('password'),
+        ]);
+
+        $this->post('/login', [
+            'email'    => 'existing.email@gmail.com',
             'password' => 'different.password',
-        ])->assertSessionHas('error', 'Incorrect username or password.');
+        ])->assertSessionHas('error', "The password doesn't match the email address provided.");
     }
 
     /** @test **/
-    function login with an email address()
+    function password_field_is_required()
     {
-        factory(User::class)->create([
-            'email' => 'brian@nsp.com',
-            'password' => bcrypt('password'),
-        ]);
-
-        $this->post('login', [
-            'login'    => 'brian@nsp.com',
-            'password' => 'password',
-        ])->assertRedirect('/');
-    }
-
-    /** @test **/
-    function login with the username()
-    {
-        factory(User::class)->create([
-            'username' => 'nsp',
-            'password' => bcrypt('password'),
-        ]);
-
-        $this->post('login', [
-            'login'    => 'nsp',
-            'password' => 'password',
-        ])->assertRedirect('/');
-    }
-
-    /** @test **/
-    function login field is required()
-    {
-        $this->post('login', [
-            'password' => 'password',
-        ])->assertSessionHasErrors([
-            'login' => 'Enter your username or email address.',
-        ]);
-    }
-
-    /** @test **/
-    function password field is required()
-    {
-        $this->post('login', [
-            'login' => 'nsp',
+        $this->post('/login', [
+            'email' => 'existing.email@gmail.com',
         ])->assertSessionHasErrors([
             'password' => 'Enter your password.',
         ]);
     }
 
     /** @test **/
-    function the email must exist in the database()
+    function the_email_field_is_required()
     {
-        $this->post('login', [
-            'login'    => 'non.existent.email@gmail.com',
-            'password' => 'passwordthing',
+        $this->post('/login', [
+            'password' => '12345678'
         ])->assertSessionHasErrors([
-            'login' => 'The email is not in our database.',
+            'email' => 'Enter your email address.',
         ]);
     }
 
     /** @test **/
-    function the username must exist in the database()
+    function the_email_must_exist_in_the_database()
     {
-        $this->post('login', [
-            'login'    => 'non-existent-username',
+        $this->post('/login', [
+            'email'    => 'non.existent.email@gmail.com',
             'password' => 'passwordthing',
         ])->assertSessionHasErrors([
-            'login' => 'The username is not in our database.',
+            'email' => 'The email is not in our database.',
         ]);
     }
 }
