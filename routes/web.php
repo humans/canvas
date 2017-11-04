@@ -17,6 +17,7 @@ Route::post('register', 'RegisterController@store')->name('register.store');
 | out, although, no one will really call us out or anything.
 |
 */
+
 Route::resource('login', 'LoginController', ['only' => ['store']]);
 Route::get('login', 'LoginController@create')->name('login');
 Route::get('logout', 'LoginController@destroy')->name('logout');
