@@ -1,4 +1,17 @@
-@import '~normalize.css/normalize';
+/*
+|--------------------------------------------------------------------------
+| Tailwind Preflight
+|--------------------------------------------------------------------------
+|
+| This injects Tailwind's base styles, which is a combination of
+| Normalize.css and some additional base styles.
+|
+| You can see the styles here:
+| https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
+|
+*/
+
+@tailwind preflight;
 
 /*
 |--------------------------------------------------------------------------
@@ -8,6 +21,7 @@
 | This is where the whole application will depend upon.
 |
 */
+
 @import 'base/variables';
 @import 'base/boilerplate';
 @import 'base/typography';
@@ -21,6 +35,7 @@
 | Feel free to break apart your files when need be.
 |
 */
+
 @import 'tools/mixins';
 
 /*
@@ -31,6 +46,7 @@
 | I have no idea how to describe this section. It's yours @joshcerbito!
 |
 */
+
 @import 'objects/form';
 @import 'objects/modal';
 
@@ -42,6 +58,7 @@
 | Here's where all the layout elements would be styled.
 |
 */
+
 @import 'layouts/header';
 @import 'layouts/footer';
 @import 'layouts/section';
@@ -55,6 +72,20 @@
 | Something something Vue and or React components.
 |
 */
+
+// @import 'components/field';
+
+/*
+|--------------------------------------------------------------------------
+| Tailwind Utilities
+|--------------------------------------------------------------------------
+|
+| This injects all of Tailwind's utility classes, generated based on your
+| config file.
+|
+*/
+
+@tailwind utilities;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,4 +101,5 @@
 | file it's own lonesome corner.
 |
 */
+
 @import 'base/utilities';
