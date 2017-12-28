@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -6,7 +6,19 @@ import Vue from 'vue';
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
+
+/**
+ * If needed, Canvas ships with redux with a pretty good starting point for
+ * the architecture.
+ *
+ * To install:
+ *      yarn add vuex
+ *
+ * Import the store and add it to the root Vue instance.
+ */
+
+// import store from './vuex/store'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -17,5 +29,5 @@ require('./bootstrap');
 // Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '#app'
-});
+    el: '#app',
+})
