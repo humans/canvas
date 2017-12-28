@@ -25,9 +25,7 @@ class RegisterController extends Controller
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
-        auth()->login(
-            User::create($this->request())
-        );
+        User::create($this->request())->login();
 
         return redirect()->route('home');
     }
