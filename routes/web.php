@@ -10,11 +10,11 @@ Route::post('register', 'RegisterController@store')->name('register.store');
 | Authentication
 |----------------------------------------------------------
 |
-| I really don't like Laravel's defaults since it's not
-| RESTful. It just really makes my OCPD act up. (╯°□°）╯︵ ┻━┻
+| I really don't like Laravel's defaults since it's not RESTful. It just
+| really makes my OCPD act up. (╯°□°）╯︵ ┻━┻
 |
-| Well, since we're using a custom login, we kinda have an
-| out, although, no one will really call us out or anything.
+| Well, since we're using a custom login, we kinda have an out, although,
+| no one will really call us out or anything.
 |
 */
 
