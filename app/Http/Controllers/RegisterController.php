@@ -32,10 +32,12 @@ class RegisterController extends Controller
         return redirect()->route('home');
     }
 
-    public function request()
+    private function request()
     {
-        return request(['name', 'email']) + [
-            'password' => bcrypt(request('password'))
+        return [
+            'name'     => request('name'),
+            'email'    => request('email'),
+            'password' => bcrypt(request('password')),
         ];
     }
 }
