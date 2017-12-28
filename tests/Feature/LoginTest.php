@@ -65,7 +65,7 @@ class LoginTest extends TestCase
             'email'    => 'non.existent.email@gmail.com',
             'password' => 'passwordthing',
         ])->assertSessionHasErrors([
-            'email' => 'The email is not in our database.',
+            'email' => 'That email address is not in our records.',
         ]);
     }
 }

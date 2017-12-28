@@ -16,9 +16,9 @@ trait CreatesApplication
     {
         $app = require __DIR__.'/../bootstrap/app.php';
 
-        Hash::setRounds(4);
-
         $app->make(Kernel::class)->bootstrap();
+
+        Hash::setRounds(4);
 
         return $app;
     }

@@ -2,10 +2,7 @@
 
 namespace Tests;
 
-use PHPUnit\Framework\Assert;
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends \Illuminate\Foundation\Testing\TestCase
 {
     use CreatesApplication;
 }

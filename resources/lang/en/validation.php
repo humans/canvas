@@ -103,7 +103,7 @@ return [
 
         'email' => [
             'required' => 'Enter your email address.',
-            'exists'   => 'The email is not in our database.',
+            'exists'   => 'That email address is not in our records.',
         ],
 
         'password' => [
