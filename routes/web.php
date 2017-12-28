@@ -1,6 +1,6 @@
 <?php
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', 'HomeController')->name('home');
 
 Route::get('register', 'RegisterController@create')->name('register');
 Route::post('register', 'RegisterController@store')->name('register.store');
