@@ -10,8 +10,5 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $guarded = [];
-
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden  = ['password', 'remember_token'];
 }
