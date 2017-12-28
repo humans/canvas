@@ -22,8 +22,6 @@ class LoginTest extends TestCase
             'email'    => 'existing.email@gmail.com',
             'password' => 'password',
         ])->assertRedirect('/');
-
-        $this->assertNotNull(auth()->user());
     }
 
     /** @test **/
