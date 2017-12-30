@@ -34,8 +34,10 @@ class RegisterTest extends TestCase
             'email' => 'i.am@jag.gy',
         ]);
 
-        $this->assertEquals('Jaggy Gauran', auth()->user()->name);
-        $this->assertEquals('i.am@jag.gy', auth()->user()->email);
+        $this->assertArraySubset([
+            'name'  => 'Jaggy Gauran',
+            'email' => 'i.am@jag.gy',
+        ], auth()->user()->toArray());
     }
 
     /** @test **/
