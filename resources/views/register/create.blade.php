@@ -1,35 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="POST" action="{{ route('register.store') }}">
-        {{ csrf_field() }}
+    <section class="register-form">
+        <div class="wrapper [ max-w-sm mt-8 ]">
+            <h1 class="[ mb-4 ]">Register to {{ config('app.name') }}</h1>
 
-        @component('fields.text', [
-            'label' => 'Name',
-            'name'  => 'name',
-        ])
-        @endcomponent
+            <form method="POST" action="{{ route('register.store') }}">
+                {{ csrf_field() }}
 
-        @component('fields.text', [
-            'label' => 'Email Address',
-            'name'  => 'email',
-        ])
-        @endcomponent
+                @component('fields.text', [
+                    'label' => 'Name',
+                    'name'  => 'name',
+                ])
+                @endcomponent
 
-        <div class="password-fields [ flex ]">
-            @component('fields.password', [
-                'label' => 'Password',
-                'name'  => 'password',
-            ])
-            @endcomponent
+                @component('fields.text', [
+                    'label'     => 'Email Address',
+                    'name'      => 'email',
+                    'utilities' => 'mt-2',
+                ])
+                @endcomponent
 
-            @component('fields.password', [
-                'label' => 'Repeat Password',
-                'name'  => 'password_confirmation',
-            ])
-            @endcomponent
+                <div class="password-fields [
+                        flex flex-col
+                        md:flex-row md:justify-between md:mt-2
+                    ]">
+                    @component('fields.password', [
+                        'label'     => 'Password',
+                        'name'      => 'password',
+                        'utilities' => 'mt-2 md:mt-0 md:mr-2',
+                    ])
+                    @endcomponent
+
+                    @component('fields.password', [
+                        'label'     => 'Repeat Password',
+                        'name'      => 'password_confirmation',
+                        'utilities' => 'mt-2 md:mt-0 md:ml-2',
+                    ])
+                    @endcomponent
+                </div>
+
+                <button class="button [ mt-4 ]" type="submit">Register</button>
+            </form>
         </div>
-
-        <button class="button" type="submit">Register</button>
-    </form>
+    </section>
 @endsection

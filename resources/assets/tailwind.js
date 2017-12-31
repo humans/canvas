@@ -205,26 +205,6 @@ module.exports = {
       'Droid Sans',
       'Helvetica Neue',
     ],
-    'serif': [
-      'Constantia',
-      'Lucida Bright',
-      'Lucidabright',
-      'Lucida Serif',
-      'Lucida',
-      'DejaVu Serif',
-      'Bitstream Vera Serif',
-      'Liberation Serif',
-      'Georgia',
-      'serif',
-    ],
-    'mono': [
-      'Menlo',
-      'Monaco',
-      'Consolas',
-      'Liberation Mono',
-      'Courier New',
-      'monospace',
-    ]
   },
 
 
@@ -321,7 +301,7 @@ module.exports = {
 
   tracking: {
     'tight': '-0.05em',
-    'normal': '0',
+    'normal': '-0.03em',
     'wide': '0.05em',
   },
 
