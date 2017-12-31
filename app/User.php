@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Activation;
 
 class User extends Authenticatable
 {
@@ -15,6 +17,13 @@ class User extends Authenticatable
     public function login()
     {
         auth()->login($this);
+
+        return $this;
+    }
+
+    public function sendActivationMail()
+    {
+        Mail::to($this->email)->send(new Activation);
 
         return $this;
     }

@@ -6,6 +6,8 @@ use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Activation;
 
 class RegisterTest extends TestCase
 {
@@ -24,6 +26,8 @@ class RegisterTest extends TestCase
     /** @test **/
     function create_and_log_the_user_in_on_a_successful_reigstration()
     {
+        Mail::fake();
+
         $this->post('/register', $this->factory([
             'name'     => 'Jaggy Gauran',
             'email'    => 'i.am@jag.gy',
@@ -38,6 +42,10 @@ class RegisterTest extends TestCase
             'name'  => 'Jaggy Gauran',
             'email' => 'i.am@jag.gy',
         ], auth()->user()->toArray());
+
+        Mail::assertSent(Activation::class, function ($mail) {
+            return $mail->hasTo('i.am@jag.gy');
+        });
     }
 
     /** @test **/
