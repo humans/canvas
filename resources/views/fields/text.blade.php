@@ -6,7 +6,9 @@
         @endif
     </label>
 
-    <input id="{{ $name }}" class="field-input" type="text"
+    <input id="{{ $name }}"
+           class="field-input"
+           type="{{ $type ?? 'text' }}"
            name="{{ $name }}" value="{{ old($name, $value ?? null) }}"
            placeholder="{{ $placeholder ?? null }}">
 
