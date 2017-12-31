@@ -1,5 +1,5 @@
 <div class="field {{ $name }} {{ $errors->has($name) ? 'has-error' : null }} [ {{ $utilities ?? null }} ]">
-    <label for="{{ $name }}" class="field-label [ block mb-1 text-sm font-semibold ]">
+    <label for="{{ $name }}" class="field-label [ block mb-4 text-sm font-semibold ]">
         {{ $label }}
         @if($optional ?? false)
             <small class="field-optional">(optional)</small>
@@ -7,7 +7,7 @@
     </label>
 
     <input id="{{ $name }}"
-           class="field-input [ w-full py-2 px-1 ]"
+           class="field-input [ w-full py-8 px-4 ]"
            type="{{ $type ?? 'text' }}"
            name="{{ $name }}" value="{{ old($name, $value ?? null) }}"
            placeholder="{{ $placeholder ?? null }}">

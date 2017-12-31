@@ -1,3 +1,8 @@
 .button {
-    @apply .block .bg-blue .rounded-sm .text-white .px-4 .py-2;
+    @apply .block .bg-blue .rounded-sm .py-10 .px-32;
+    @apply .uppercase .text-white .text-xs .font-semibold .tracking-wide;
+}
+
+input {
+    @apply .rounded .border;
 }
