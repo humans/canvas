@@ -29,7 +29,7 @@ var defaultConfig = require('tailwindcss/defaultConfig')
 
 /*
 |-------------------------------------------------------------------------------
-| Colors                                                                        https://tailwindcss.com/docs/colors
+| Colors                                     https://tailwindcss.com/docs/colors
 |-------------------------------------------------------------------------------
 |
 | Here you can specify the colors used in your project. To get you started,
@@ -62,7 +62,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Colors                                                                    https://tailwindcss.com/docs/colors
+    | Colors                                   https://tailwindcss.com/docs/colors
     |-----------------------------------------------------------------------------
     |
     | The color palette defined above is also assigned to the "colors" key of
@@ -78,7 +78,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Screens                                            https://tailwindcss.com/docs/responsive-design
+    | Screens                       https://tailwindcss.com/docs/responsive-design
     |-----------------------------------------------------------------------------
     |
     | Screens in Tailwind are translated to CSS media queries. They define the
@@ -105,7 +105,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Fonts                                                                        https://tailwindcss.com/docs/fonts
+    | Fonts                                     https://tailwindcss.com/docs/fonts
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your project's font stack, or font families.
@@ -139,7 +139,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Text sizes                                                 https://tailwindcss.com/docs/text-sizing
+    | Text sizes                          https://tailwindcss.com/docs/text-sizing
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your text sizes. Name these in whatever way
@@ -171,7 +171,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Font weights                                             https://tailwindcss.com/docs/font-weight
+    | Font weights                        https://tailwindcss.com/docs/font-weight
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your font weights. We've provided a list of
@@ -198,7 +198,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Leading (line height)                            https://tailwindcss.com/docs/line-height
+    | Leading (line height)               https://tailwindcss.com/docs/line-height
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your line height values, or as we call
@@ -218,7 +218,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Tracking (letter spacing)             https://tailwindcss.com/docs/letter-spacing
+    | Tracking (letter spacing)        https://tailwindcss.com/docs/letter-spacing
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your letter spacing values, or as we call
@@ -237,7 +237,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Text colors                                                 https://tailwindcss.com/docs/text-color
+    | Text colors                          https://tailwindcss.com/docs/text-color
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your text colors. By default these use the
@@ -253,7 +253,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Background colors                         https://tailwindcss.com/docs/background-color
+    | Background colors              https://tailwindcss.com/docs/background-color
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your background colors. By default these use
@@ -269,7 +269,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Border widths                                         https://tailwindcss.com/docs/border-width
+    | Border widths                      https://tailwindcss.com/docs/border-width
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your border widths. Take note that border
@@ -291,7 +291,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Border colors                                         https://tailwindcss.com/docs/border-color
+    | Border colors                      https://tailwindcss.com/docs/border-color
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your border colors. By default these use the
@@ -311,7 +311,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Border radius                                        https://tailwindcss.com/docs/border-radius
+    | Border radius                     https://tailwindcss.com/docs/border-radius
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your border radius values. If a `default` radius
@@ -333,7 +333,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Width                                                                        https://tailwindcss.com/docs/width
+    | Width                                     https://tailwindcss.com/docs/width
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your width utility sizes. These can be
@@ -385,7 +385,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Height                                                                    https://tailwindcss.com/docs/height
+    | Height                                   https://tailwindcss.com/docs/height
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your height utility sizes. These can be
@@ -421,7 +421,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Minimum width                                                https://tailwindcss.com/docs/min-width
+    | Minimum width                         https://tailwindcss.com/docs/min-width
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your minimum width utility sizes. These can
@@ -441,7 +441,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Minimum height                                            https://tailwindcss.com/docs/min-height
+    | Minimum height                       https://tailwindcss.com/docs/min-height
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your minimum height utility sizes. These can
@@ -462,7 +462,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Maximum width                                                https://tailwindcss.com/docs/max-width
+    | Maximum width                         https://tailwindcss.com/docs/max-width
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your maximum width utility sizes. These can
@@ -491,7 +491,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Maximum height                                            https://tailwindcss.com/docs/max-height
+    | Maximum height                       https://tailwindcss.com/docs/max-height
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your maximum height utility sizes. These can
@@ -511,7 +511,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Padding                                                                https://tailwindcss.com/docs/padding
+    | Padding                                 https://tailwindcss.com/docs/padding
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your padding utility sizes. These can be
@@ -538,7 +538,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Margin                                                                    https://tailwindcss.com/docs/margin
+    | Margin                                   https://tailwindcss.com/docs/margin
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your margin utility sizes. These can be
@@ -564,7 +564,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Negative margin                                https://tailwindcss.com/docs/negative-margin
+    | Negative margin                 https://tailwindcss.com/docs/negative-margin
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your negative margin utility sizes. These can
@@ -585,7 +585,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Shadows                                                                https://tailwindcss.com/docs/shadows
+    | Shadows                                 https://tailwindcss.com/docs/shadows
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your shadow utilities. As you can see from
@@ -610,7 +610,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Z-index                                                                https://tailwindcss.com/docs/z-index
+    | Z-index                                 https://tailwindcss.com/docs/z-index
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your z-index utility values. By default we
@@ -634,7 +634,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Opacity                                                                https://tailwindcss.com/docs/opacity
+    | Opacity                                 https://tailwindcss.com/docs/opacity
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your opacity utility values. By default we
@@ -655,7 +655,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | SVG fill                                                                     https://tailwindcss.com/docs/svg
+    | SVG fill                                    https://tailwindcss.com/docs/svg
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your SVG fill colors. By default we just provide
@@ -674,7 +674,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | SVG stroke                                                                 https://tailwindcss.com/docs/svg
+    | SVG stroke                                  https://tailwindcss.com/docs/svg
     |-----------------------------------------------------------------------------
     |
     | Here is where you define your SVG stroke colors. By default we just provide
@@ -693,7 +693,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Modules                                    https://tailwindcss.com/docs/configuration#modules
+    | Modules                   https://tailwindcss.com/docs/configuration#modules
     |-----------------------------------------------------------------------------
     |
     | Here is where you control which modules are generated and what variants are
@@ -756,7 +756,7 @@ module.exports = {
 
     /*
     |-----------------------------------------------------------------------------
-    | Advanced Options                 https://tailwindcss.com/docs/configuration#options
+    | Advanced Options          https://tailwindcss.com/docs/configuration#options
     |-----------------------------------------------------------------------------
     |
     | Here is where you can tweak advanced configuration options. We recommend
