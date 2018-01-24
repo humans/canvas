@@ -1,17 +1,15 @@
-const ModularScale = require('modular-scale')
 const Color = require('color')
+const ModularScale = require('modularscale-js')
 
-export const ms = () => {
-    let modularScale = ModularScale({
-        rations: [1.3333],
-        bases:   [1],
-    });
+module.exports = {
+    ms: (value) => {
+        return ModularScale(value, {
+            base:  [16],
+            ratio: 1.3333
+        })
+    },
 
-    return modularScale(value) * 16 + 'px'
+    hsv: (h, s, v) => {
+        return Color({ h, s, v }).rgb().string()
+    },
 }
-
-export const hsv = (hue, saturation, value) => {
-    return Color({ h: hue, s: saturation, v: value }).rgb().string()
-}
-
-
