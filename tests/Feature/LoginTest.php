@@ -13,7 +13,7 @@ class LoginTest extends TestCase
     /** @test **/
     function redirect_back_when_credentials_are_invalid()
     {
-        factory(User::class)->create([
+        User::factory()->create([
             'email'    => 'brian@nsp.com',
             'password' => bcrypt('password'),
         ]);
@@ -27,7 +27,7 @@ class LoginTest extends TestCase
     /** @test **/
     function login_with_an_email_address()
     {
-        factory(User::class)->create([
+        User::factory()->create([
             'email' => 'brian@nsp.com',
             'password' => bcrypt('password'),
         ]);
@@ -41,7 +41,7 @@ class LoginTest extends TestCase
     /** @test **/
     function login_with_the_username()
     {
-        factory(User::class)->create([
+        User::factory()->create([
             'username' => 'nsp',
             'password' => bcrypt('password'),
         ]);

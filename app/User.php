@@ -9,7 +9,7 @@ use App\Mail\Activation;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasFactories;
 
     protected $guarded = [];
     protected $hidden  = ['password', 'remember_token'];

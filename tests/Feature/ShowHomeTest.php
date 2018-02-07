@@ -19,7 +19,7 @@ class ShowHomeTest extends TestCase
     /** @test **/
     public function show_the_home_page_when_the_user_is_logged_in()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)->get('/')->assertViewIs('home');
     }
