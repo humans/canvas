@@ -9,3 +9,7 @@ function is_email($login)
 {
     return filter_var($login, FILTER_VALIDATE_EMAIL);
 }
+
+function login()
+{
+}

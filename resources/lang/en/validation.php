@@ -103,7 +103,7 @@ return [
 
         'login' => [
             'required' => 'Enter your username or email address.',
-            'exists'   => 'The :field is not in our database.',
+            'exists'   => 'The :login is not in our database.',
         ],
 
         'email' => [

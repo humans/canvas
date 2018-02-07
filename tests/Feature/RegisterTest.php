@@ -17,6 +17,7 @@ class RegisterTest extends TestCase
     {
         return $attributes + [
             'email'                 => 'validemail@email.com',
+            'username'              => 'valid.username',
             'name'                  => 'Valid Name',
             'password'              => 'some.password@password$$$',
             'password_confirmation' => 'some.password@password$$$',
@@ -108,5 +109,23 @@ class RegisterTest extends TestCase
         ]))->assertSessionHasErrors([
             'email'
         ]);
+    }
+
+    /** @test **/
+    function dont_allow_a_username_that_starts_with_a_number()
+    {
+        $this->markTestIncomplete();
+    }
+
+    /** @test **/
+    function dont_allow_a_username_that_starts_with_an_allowed_special_character()
+    {
+        $this->markTestIncomplete();
+    }
+
+    /** @test **/
+    function dont_allow_a_username_with_special_characters_other_than_dots_and_underscores()
+    {
+        $this->markTestIncomplete();
     }
 }

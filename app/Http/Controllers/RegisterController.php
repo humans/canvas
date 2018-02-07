@@ -34,6 +34,7 @@ class RegisterController extends Controller
     {
         return [
             'name'     => request('name'),
+            'username' => request('username'),
             'email'    => request('email'),
             'password' => bcrypt(request('password')),
         ];
