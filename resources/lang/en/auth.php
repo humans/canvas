@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed'   => "The password doesn't match the email address provided.",
+    'failed'   => "The password doesn't match the given :field.",
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

@@ -101,6 +101,11 @@ return [
 
     'custom' => [
 
+        'login' => [
+            'required' => 'Enter your username or email address.',
+            'exists'   => 'The :field is not in our database.',
+        ],
+
         'email' => [
             'required' => 'Enter your email address.',
             'exists'   => 'That email address is not in our records.',
