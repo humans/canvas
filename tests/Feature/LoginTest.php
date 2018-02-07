@@ -21,7 +21,7 @@ class LoginTest extends TestCase
         $this->post('/login', [
             'login'    => 'brian@nsp.com',
             'password' => 'different.password',
-        ])->assertSessionHas('error', "The password doesn't match the given email address.");
+        ])->assertSessionHas('error', "The password doesn't match the given email.");
     }
 
     /** @test **/

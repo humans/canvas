@@ -39,10 +39,10 @@ class LoginController extends Controller
 
     private function credentials()
     {
-        $field = is_email(request('login')) ? 'email' : 'username';
+        $login = login_field(request('login'));
 
         return [
-            $field     => request('login'),
+            $login     => request('login'),
             'password' => request('password'),
         ];
     }
@@ -50,7 +50,7 @@ class LoginController extends Controller
     private function loginFailedMessage()
     {
         return __('auth.failed', [
-            'field' => is_email(request('login')) ? 'email address' : 'username'
+            'field' => login_field(request('login'))
         ]);
     }
 }

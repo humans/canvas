@@ -19,7 +19,7 @@ class LoginExists implements Rule
     public function message()
     {
         return __('validation.custom.login.exists', [
-            'login' => is_email(request('login')) ? 'email' : 'username',
+            'login' => login_field(request('login')),
         ]);
     }
 }
