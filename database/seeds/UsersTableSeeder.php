@@ -5,16 +5,10 @@ use App\User;
 
 class UsersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        $users = [
-        ];
-
-        array_map([User::class, 'create'], $users;
+        factory(User::class)->create([
+            //
+        ]);
     }
 }
