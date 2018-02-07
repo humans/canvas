@@ -112,20 +112,42 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
+    function dont_allow_an_empty_username()
+    {
+        $this->post('/register', $this->factory([
+            'username' => null,
+        ]))->assertSessionHasErrors([
+            'username'
+        ]);
+    }
+
+    /** @test **/
     function dont_allow_a_username_that_starts_with_a_number()
     {
-        $this->markTestIncomplete();
+        $this->post('/register', $this->factory([
+            'username' => '123username',
+        ]))->assertSessionHasErrors([
+            'username'
+        ]);
     }
 
     /** @test **/
     function dont_allow_a_username_that_starts_with_an_allowed_special_character()
     {
-        $this->markTestIncomplete();
+        $this->post('/register', $this->factory([
+            'username' => '_username',
+        ]))->assertSessionHasErrors([
+            'username'
+        ]);
     }
 
     /** @test **/
     function dont_allow_a_username_with_special_characters_other_than_dots_and_underscores()
     {
-        $this->markTestIncomplete();
+        $this->post('/register', $this->factory([
+            'username' => 'u$ername',
+        ]))->assertSessionHasErrors([
+            'username'
+        ]);
     }
 }

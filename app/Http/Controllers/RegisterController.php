@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\Username;
 use App\User;
-use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -22,6 +22,7 @@ class RegisterController extends Controller
         request()->validate([
             'name'     => 'required',
             'email'    => ['required', 'email'],
+            'username' => ['required', new Username],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 

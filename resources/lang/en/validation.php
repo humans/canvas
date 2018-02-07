@@ -115,6 +115,8 @@ return [
             'required' => 'Enter your password.',
         ],
 
+        'username' => 'Some invalid message',
+
     ],
 
     /*
