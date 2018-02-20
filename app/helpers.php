@@ -10,7 +10,11 @@ function is_email($login)
     return !! filter_var($login, FILTER_VALIDATE_EMAIL);
 }
 
-function login_field($login)
+function login_field()
 {
-    return is_email($login) ? 'email' : 'username';
+    if (is_email(request('login'))) {
+        return 'email';
+    }
+
+    return 'username';
 }

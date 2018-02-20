@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Rules\LoginExists;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -16,15 +16,10 @@ class LoginController extends Controller
         return view('login.create');
     }
 
-    public function store()
+    public function store(LoginRequest $request)
     {
-        $credentials = request()->validate([
-            'login'    => ['required', new LoginExists],
-            'password' => 'required',
-        ]);
-
-        if (! auth()->attempt($this->credentials(), request('remember'))) {
-            return back()->with('error', $this->loginFailedMessage());
+        if (! $this->login($request->credentials())) {
+            return back()->with('error', $this->failed());
         }
 
         return redirect()->intended(route('home'));
@@ -37,20 +32,13 @@ class LoginController extends Controller
         return redirect()->route('home');
     }
 
-    private function credentials()
+    private function login($credentials)
     {
-        $login = login_field(request('login'));
-
-        return [
-            $login     => request('login'),
-            'password' => request('password'),
-        ];
+        return auth()->attempt($credentials, request('remember'));
     }
 
-    private function loginFailedMessage()
+    private function failed()
     {
-        return __('auth.failed', [
-            'field' => login_field(request('login'))
-        ]);
+        return __('auth.failed', ['field' => login_field()]);
     }
 }

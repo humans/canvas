@@ -16,7 +16,10 @@ class HelpersTest extends TestCase
     /** @test **/
     function check_the_login_field_of_the_string_provided()
     {
-        $this->assertEquals('email', login_field('jaggy@artisan.studio'));
-        $this->assertEquals('username', login_field('jaggy'));
+        app('request')->replace(['login' => 'jaggy@artisan.studio']);
+        $this->assertEquals('email', login_field());
+
+        app('request')->replace(['login' => 'jaggy']);
+        $this->assertEquals('username', login_field());
     }
 }
