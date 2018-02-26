@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Laravel\Dusk\DuskServiceProvider;
+use App\Http\Controllers\ActivateUserController;
 
 class AppServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -13,6 +14,7 @@ class AppServiceProvider extends \Illuminate\Support\ServiceProvider
         view()->composer('*', function ($view) {
             $view->with('me', auth()->user());
         });
+
     }
 
     public function register()

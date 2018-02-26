@@ -2,30 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Mail;
-use App\Mail\Welcome;
 use App\User;
 
 class ActivateUserController extends Controller
 {
-    public function __invoke()
+    public function __construct()
     {
-        request()->validate([
-            'token' => 'required',
-        ]);
-
-        $user = tap($this->user())->update([
-            'activated_at'     => now(),
-            'activation_token' => null,
-        ]);
-
-        Mail::to($user->email)->queue(new Welcome);
-
-        return redirect()->route('login');
+        $this->middleware('guest');
     }
 
-    private function user()
+    public function __invoke()
     {
-        return User::where('activation_token', request('token'))->first();
+        request()->validate(['token' => 'required']);
+
+        User::byActivationToken(request('token'))
+            ->activate()
+            ->sendWelcomeMail();
+
+        return redirect()->route('login');
     }
 }
