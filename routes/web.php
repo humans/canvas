@@ -25,3 +25,11 @@ Route::post('register', 'RegisterController@store')->name('register.store');
 Route::resource('login', 'LoginController', ['only' => ['store']]);
 Route::get('login', 'LoginController@create')->name('login');
 Route::get('logout', 'LoginController@destroy')->name('logout');
+
+/*
+|----------------------------------------------------------
+| Activation
+|----------------------------------------------------------
+*/
+
+Route::get('activate', 'ActivateUserController')->name('users.activate');
