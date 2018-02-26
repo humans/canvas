@@ -20,6 +20,10 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+
+        if ($this->app->environment('local')) {
+            $this->mapMailRoutes();
+        }
     }
 
     protected function mapWebRoutes()
@@ -35,5 +39,13 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
              ->middleware('api')
              ->namespace($this->namespace . "\\Api")
              ->group(base_path('routes/api.php'));
+    }
+
+    protected function mapMailRoutes()
+    {
+        Route::prefix('mail')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/mail.php'));
     }
 }

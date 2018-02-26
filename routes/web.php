@@ -32,4 +32,4 @@ Route::get('logout', 'LoginController@destroy')->name('logout');
 |----------------------------------------------------------
 */
 
-Route::get('activate', 'ActivateUserController')->name('users.activate');
+Route::get('activate', 'ActivateUserController')->name('activate');
