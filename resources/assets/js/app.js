@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import axios from 'axios'
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -30,4 +31,22 @@ require('./bootstrap')
 
 const app = new Vue({
     el: '#app',
+
+    data: { user: {} },
+
+    mounted() {
+        this.refreshUser()
+    },
+
+    methods: {
+
+        /**
+         * This is an example method to test and demonstrate that Laravel Passport
+         * is working right out of the box.
+         */
+        refreshUser() {
+            axios.get('/api/user').then(({ data: user }) => this.user = user)
+        },
+
+    },
 })

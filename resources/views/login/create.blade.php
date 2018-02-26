@@ -9,8 +9,8 @@
                 {{ csrf_field() }}
 
                 @component('fields.text', [
-                    'label' => 'Email Address',
-                    'name'  => 'email',
+                    'label' => 'Email address or Username',
+                    'name'  => 'login',
                 ])
                 @endcomponent
 
