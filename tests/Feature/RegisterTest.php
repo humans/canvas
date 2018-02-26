@@ -32,17 +32,14 @@ class RegisterTest extends TestCase
         $this->post('/register', $this->factory([
             'name'     => 'Jaggy Gauran',
             'email'    => 'i.am@jag.gy',
-        ]))->assertRedirect('/');
+        ]))->assertRedirect('/confirm-email');
 
         $this->assertDatabaseHas('users', [
             'name'  => 'Jaggy Gauran',
             'email' => 'i.am@jag.gy',
         ]);
 
-        $this->assertArraySubset([
-            'name'  => 'Jaggy Gauran',
-            'email' => 'i.am@jag.gy',
-        ], auth()->user()->toArray());
+        $this->assertNotNull(User::first()->activation_token);
 
         Mail::assertSent(Activation::class, function ($mail) {
             return $mail->hasTo('i.am@jag.gy');

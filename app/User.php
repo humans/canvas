@@ -12,11 +12,4 @@ class User extends Authenticatable
 
     protected $guarded = [];
     protected $hidden  = ['password', 'remember_token'];
-
-    public function login()
-    {
-        auth()->login($this);
-
-        return $this;
-    }
 }

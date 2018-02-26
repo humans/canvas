@@ -33,3 +33,4 @@ Route::get('logout', 'LoginController@destroy')->name('logout');
 */
 
 Route::get('activate', 'ActivateUserController')->name('activate');
+Route::view('confirm-email', 'users.confirm-email')->name('confirm-email');

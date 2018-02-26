@@ -8,6 +8,12 @@ use App\Mail\Welcome;
 
 trait Activatable
 {
+    public function setEmailAttribute($email)
+    {
+        $this->attributes['email']            = $email;
+        $this->attributes['activation_token'] = sha1(uniqid(mt_rand(), true) . $email);
+    }
+
     public function scopeInactive($query)
     {
         $query->whereNotNull('activation_token');

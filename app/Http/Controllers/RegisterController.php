@@ -26,9 +26,9 @@ class RegisterController extends Controller
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
-        User::create($this->request())->sendActivationMail()->login();
+        User::create($this->request())->sendActivationMail();
 
-        return redirect()->route('home');
+        return redirect()->route('confirm-email');
     }
 
     private function request()
