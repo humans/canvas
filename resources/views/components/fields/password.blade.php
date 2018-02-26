@@ -1,4 +1,4 @@
-@component('fields.text', [
+@component('components.fields.text', [
     'label'     => $label,
     'name'      => $name,
     'utilities' => $utilities ?? null,

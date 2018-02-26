@@ -8,13 +8,13 @@
             <form method="POST" action="{{ route('login.store') }}">
                 {{ csrf_field() }}
 
-                @component('fields.text', [
+                @text-field([
                     'label' => 'Email address or Username',
                     'name'  => 'login',
                 ])
-                @endcomponent
+                @endtext-field
 
-                @component('fields.password', [
+                @component('components.fields.password', [
                     'label'     => 'Password',
                     'name'      => 'password',
                     'utilities' => 'mt-8',

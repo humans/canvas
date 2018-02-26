@@ -8,36 +8,36 @@
             <form method="POST" action="{{ route('register.store') }}">
                 {{ csrf_field() }}
 
-                @component('fields.text', [
+                @textfield([
                     'label' => 'Name',
                     'name'  => 'name',
                 ])
-                @endcomponent
+                @endtextfield
 
-                @component('fields.text', [
+                @textfield([
                     'label'     => 'Email Address',
                     'name'      => 'email',
                     'utilities' => 'mt-2',
                 ])
-                @endcomponent
+                @endtextfield
 
                 <div class="password-fields [
                         flex flex-col
                         md:flex-row md:justify-between md:mt-2
                     ]">
-                    @component('fields.password', [
+                    @passwordfield([
                         'label'     => 'Password',
                         'name'      => 'password',
                         'utilities' => 'mt-2 md:mt-0 md:mr-2',
                     ])
-                    @endcomponent
+                    @endpasswordfield
 
-                    @component('fields.password', [
+                    @passwordfield([
                         'label'     => 'Repeat Password',
                         'name'      => 'password_confirmation',
                         'utilities' => 'mt-2 md:mt-0 md:ml-2',
                     ])
-                    @endcomponent
+                    @endpasswordfield
                 </div>
 
                 <button class="button [ mt-4 ]" type="submit">Register</button>
