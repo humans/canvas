@@ -32,7 +32,9 @@ class RegisterTest extends TestCase
         $this->post('/register', $this->factory([
             'name'     => 'Jaggy Gauran',
             'email'    => 'i.am@jag.gy',
-        ]))->assertRedirect('/confirm-email');
+        ]))->assertRedirect(
+            '/confirm-email?hash=' . md5(User::first()->email)
+        );
 
         $this->assertDatabaseHas('users', [
             'name'  => 'Jaggy Gauran',

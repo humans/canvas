@@ -15,6 +15,12 @@
                 @endtextfield
 
                 @textfield([
+                    'label' => 'Username',
+                    'name'  => 'username',
+                ])
+                @endtextfield
+
+                @textfield([
                     'label'     => 'Email Address',
                     'name'      => 'email',
                     'utilities' => 'mt-2',
