@@ -16,14 +16,12 @@
                     'label' => 'Email address or Username',
                     'name'  => 'login',
                 ])
-                @endtextfield
 
                 @passwordfield([
                     'label'     => 'Password',
                     'name'      => 'password',
                     'utilities' => 'mt-8',
                 ])
-                @endpasswordfield
 
                 <div class="field [ mt-8 ]">
                     <label>

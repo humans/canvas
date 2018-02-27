@@ -10,9 +10,9 @@ class BladeServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         Blade::withoutDoubleEncoding();
 
-        Blade::component('components.fields.text', 'textfield');
-        Blade::component('components.fields.password', 'passwordfield');
-        Blade::component('components.errors', 'errors');
+        Blade::include('components.fields.text', 'textfield');
+        Blade::include('components.fields.password', 'passwordfield');
+        Blade::include('components.errors', 'errors');
     }
 
     public function register()
