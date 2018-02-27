@@ -21,6 +21,8 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
 
         $this->mapWebRoutes();
 
+        $this->mapAdminRoutes();
+
         if ($this->app->environment('local')) {
             $this->mapMailRoutes();
         }
@@ -39,6 +41,14 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
              ->middleware('api')
              ->namespace($this->namespace . "\\Api")
              ->group(base_path('routes/api.php'));
+    }
+
+    protected function mapAdminRoutes()
+    {
+        Route::prefix('admin')
+            ->middleware('web', 'admin')
+            ->namespace($this->namespace . '\Admin')
+            ->group(base_path('routes/admin.php'));
     }
 
     protected function mapMailRoutes()

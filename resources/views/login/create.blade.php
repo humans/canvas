@@ -18,12 +18,12 @@
                 ])
                 @endtextfield
 
-                @textfield([
+                @passwordfield([
                     'label'     => 'Password',
                     'name'      => 'password',
                     'utilities' => 'mt-8',
                 ])
-                @endtextfield
+                @endpasswordfield
 
                 <div class="field [ mt-8 ]">
                     <label>
