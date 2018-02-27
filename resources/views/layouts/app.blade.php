@@ -3,24 +3,27 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-        <title>{{ config('app.name') }}</title>
+        <title>
+           @yield('title', config('app.name'))
+        </title>
 
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
         <script>
-         window.App = window.Laravel = {!! json_encode([
-            'csrfToken'  => csrf_token(),
-            'hasSession' => !! $me,
-            'pusher' => [
-                'key'     => config('broadcasting.connections.pusher.key'),
-                'cluster' => config('broadcasting.connections.pusher.options.cluster'),
-            ],
-        ]) !!}
+            window.App = window.Laravel = {!! json_encode([
+                'csrfToken'  => csrf_token(),
+                'hasSession' => !! $me,
+                'pusher' => [
+                    'key'     => config('broadcasting.connections.pusher.key'),
+                    'cluster' => config('broadcasting.connections.pusher.options.cluster'),
+                ],
+            ]) !!}
         </script>
     </head>
-    <body class="[ font-sans leading-normal tracking-normal ]">
+    <body class="[ font-sans leading-normal tracking-normal text-base text-black ]">
         <main id="app">
             @include('layouts.header')
 

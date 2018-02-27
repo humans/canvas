@@ -1,17 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 v-html="user.name"></h1>
+    <div class="wrapper">
+        <h1 v-html="user.name"></h1>
 
-    @if($me->is_admin)
-        <a href="">Admin</a>
-    @endif
+        @if($me->is_admin)
+            <a href="">Admin</a>
+        @endif
 
-    @impersonating
-    Impersonating {{ $me->name }}
+        @impersonating
+        Impersonating {{ $me->name }}
 
-    <a href="{{ route('impersonate.leave') }}">Leave Impersonation</a>
-    @endImpersonating
+        <a href="{{ route('impersonate.leave') }}">Leave Impersonation</a>
+        @endImpersonating
 
-    Home
+        Home
+    </div>
 @endsection
