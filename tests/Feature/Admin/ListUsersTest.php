@@ -19,22 +19,4 @@ class ListUsersTest extends TestCase
             ->get('/admin/users')
             ->assertSuccessful();
     }
-
-    /** @test **/
-    function dont_allow_a_guest_to_access_the_page()
-    {
-        $this
-            ->get('/admin/users')
-            ->assertStatus(404);
-    }
-
-    /** @test **/
-    function dont_allow_non_admins_to_access_the_page()
-    {
-        $user = factory(User::class)->create();
-
-        $this->actingAs($user)
-            ->get('/admin/users')
-            ->assertStatus(404);
-    }
 }

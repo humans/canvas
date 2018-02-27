@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="wrapper">
+        <h1>User List</h1>
+
         <table class="[ w-full ]">
             <thead class="[ text-left ]">
                 <tr>
