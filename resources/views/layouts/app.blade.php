@@ -8,9 +8,22 @@
         <title>{{ config('app.name') }}</title>
 
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+        <script>
+         window.App = window.Laravel = {!! json_encode([
+            'csrfToken'  => csrf_token(),
+            'hasSession' => !! $me,
+            'pusher' => [
+                'key'     => config('broadcasting.connections.pusher.key'),
+                'cluster' => config('broadcasting.connections.pusher.options.cluster'),
+            ],
+        ]) !!}
+        </script>
     </head>
-    <body>
+    <body class="[ font-sans leading-normal tracking-normal ]">
         <main id="app">
+            @include('layouts.header')
+
             @yield('content')
         </main>
 
