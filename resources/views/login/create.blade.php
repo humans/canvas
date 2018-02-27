@@ -5,21 +5,25 @@
         <div class="wrapper [ max-w-sm mt-32 ]">
             <h1 class="[ mb-16 ]">Login to {{ config('app.name') }}</h1>
 
+            @if($message = session('message'))
+                <p>{{ $message }}</p>
+            @endif
+
             <form method="POST" action="{{ route('login.store') }}">
                 {{ csrf_field() }}
 
-                @text-field([
+                @textfield([
                     'label' => 'Email address or Username',
                     'name'  => 'login',
                 ])
-                @endtext-field
+                @endtextfield
 
-                @component('components.fields.password', [
+                @textfield([
                     'label'     => 'Password',
                     'name'      => 'password',
                     'utilities' => 'mt-8',
                 ])
-                @endcomponent
+                @endtextfield
 
                 <div class="field [ mt-8 ]">
                     <label>

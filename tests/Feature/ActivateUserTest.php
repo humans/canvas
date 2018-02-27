@@ -22,9 +22,9 @@ class ActivateUserTest extends TestCase
             'email'    => 'jake@nine-nine.nyc',
         ]);
 
-        $this
-            ->get("activate?token={$user->activation_token}")
-            ->assertRedirect('/login');
+        $this->get("activate?token={$user->activation_token}")->assertSessionHas([
+            'message' => 'Your account is now activated.',
+        ])->assertRedirect('/login');
 
         $user->refresh();
 

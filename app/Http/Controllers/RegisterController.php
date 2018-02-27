@@ -28,9 +28,9 @@ class RegisterController extends Controller
 
         $user = User::create($this->request())->sendActivationMail();
 
-        return redirect()->route('confirm-email', [
-            'hash' => md5($user->email),
-        ]);
+        session($user->only('email', 'activation_token'));
+
+        return redirect()->route('confirm-email');
     }
 
     private function request()

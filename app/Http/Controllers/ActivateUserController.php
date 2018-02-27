@@ -19,6 +19,8 @@ class ActivateUserController extends Controller
             ->activate()
             ->sendWelcomeMail();
 
+        session()->flash('message', 'Your account is now activated.');
+
         return redirect()->route('login');
     }
 }
