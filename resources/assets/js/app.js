@@ -22,6 +22,12 @@ require('./bootstrap')
 // import store from './vuex/store'
 
 /**
+ * This mixin is to demo that Laravel Passport works out of the box.
+ */
+
+import PassportExample from './mixins/PassportExample'
+
+/**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
@@ -30,23 +36,9 @@ require('./bootstrap')
 // Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
+
     el: '#app',
 
-    data: { user: {} },
+    mixins: [ PassportExample ],
 
-    mounted() {
-        this.refreshUser()
-    },
-
-    methods: {
-
-        /**
-         * This is an example method to test and demonstrate that Laravel Passport
-         * is working right out of the box.
-         */
-        refreshUser() {
-            axios.get('/api/user').then(({ data: user }) => this.user = user)
-        },
-
-    },
 })

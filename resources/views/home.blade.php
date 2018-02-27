@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="wrapper">
-        <h1 v-html="user.name"></h1>
 
         @if($me->is_admin)
             <a href="">Admin</a>
@@ -14,6 +13,12 @@
         <a href="{{ route('impersonate.leave') }}">Leave Impersonation</a>
         @endImpersonating
 
-        Home
+        <h1>Home</h1>
+
+        <p>
+            <small>
+                Hey <strong v-html="user.name"></strong>! This part is a small demo of Laravel Passport working out of the box.
+            </small>
+        </p>
     </div>
 @endsection
