@@ -7,5 +7,11 @@
         <a href="">Admin</a>
     @endif
 
+    @impersonating
+    Impersonating {{ $me->name }}
+
+    <a href="{{ route('impersonate.leave') }}">Leave Impersonation</a>
+    @endImpersonating
+
     Home
 @endsection

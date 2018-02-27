@@ -26,6 +26,8 @@ Route::resource('login', 'LoginController', ['only' => ['store']]);
 Route::get('login', 'LoginController@create')->name('login');
 Route::get('logout', 'LoginController@destroy')->name('logout');
 
+Route::impersonate();
+
 /*
 |----------------------------------------------------------
 | Activation
