@@ -40,6 +40,7 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
         Route::prefix('api')
              ->middleware('api')
              ->namespace($this->namespace . "\\Api")
+            ->as('api.')
              ->group(base_path('routes/api.php'));
     }
 
@@ -48,6 +49,7 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
         Route::prefix('admin')
             ->middleware('web', 'admin')
             ->namespace($this->namespace . '\Admin')
+            ->as('admin.')
             ->group(base_path('routes/admin.php'));
     }
 
