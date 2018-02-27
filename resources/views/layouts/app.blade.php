@@ -27,7 +27,15 @@
         <main id="app">
             @include('layouts.header')
 
-            @yield('content')
+            <section class="content">
+                @impersonating
+                <section class="wrapper [ text-sm text-grey-darker ]">
+                    <p>@lang('messages.impersonation_notice', ['name' => $me->name])</p>
+                </section>
+                @endImpersonating
+
+                @yield('content')
+            </section>
         </main>
 
         <script src="{{ mix('js/manifest.js') }}"></script>

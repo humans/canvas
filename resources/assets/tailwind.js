@@ -311,6 +311,7 @@ module.exports = {
     borderColors: Object.assign({ default: colors['grey-light'] }, colors),
 
 
+
     /*
     |-----------------------------------------------------------------------------
     | Border radius                     https://tailwindcss.com/docs/border-radius
