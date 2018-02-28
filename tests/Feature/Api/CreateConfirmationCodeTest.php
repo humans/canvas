@@ -30,4 +30,12 @@ class CreateConfirmationCodeTest extends TestCase
             return $mail->hasTo('jaggy@artisan.studio');
         });
     }
+
+    /** @test **/
+    function dont_allow_an_empty_email_address()
+    {
+        $this->json('POST', '/api/confirmation-codes', [
+            'email' => null,
+        ])->assertStatus(422);
+    }
 }

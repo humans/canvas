@@ -8,7 +8,11 @@ class ConfirmationCodesController extends Controller
 {
     public function store()
     {
-        ConfirmationCode::fromEmail(request('email'))->send();
+        $email = request()->validate([
+            'email' => 'required'
+        ]);
+
+        ConfirmationCode::create($email)->send();
 
         return response(['response' => true], 201);
     }

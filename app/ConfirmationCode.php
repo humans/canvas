@@ -14,13 +14,6 @@ class ConfirmationCode extends Model
         });
     }
 
-    public static function fromEmail($email)
-    {
-        return static::create([
-            'email' => $email,
-        ]);
-    }
-
     public function send()
     {
         Mail::to($this->email)->queue(new EmailConfirmation($this->code));
