@@ -2,6 +2,9 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailConfirmation;
+
 class ConfirmationCode extends Model
 {
     public static function boot()
@@ -9,5 +12,17 @@ class ConfirmationCode extends Model
         static::creating(function ($model) {
             $model->code = sprintf("%06d", mt_rand(1, 999999));
         });
+    }
+
+    public static function fromEmail($email)
+    {
+        return static::create([
+            'email' => $email,
+        ]);
+    }
+
+    public function send()
+    {
+        Mail::to($this->email)->queue(new EmailConfirmation($this->code));
     }
 }
