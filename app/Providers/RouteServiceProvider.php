@@ -23,9 +23,7 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
 
         $this->mapAdminRoutes();
 
-        if ($this->app->environment('local')) {
-            $this->mapMailRoutes();
-        }
+        $this->mapMailRoutes();
     }
 
     protected function mapWebRoutes()
@@ -40,7 +38,7 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
         Route::prefix('api')
              ->middleware('api')
              ->namespace($this->namespace . "\\Api")
-            ->as('api.')
+             ->as('api.')
              ->group(base_path('routes/api.php'));
     }
 
@@ -55,6 +53,10 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
 
     protected function mapMailRoutes()
     {
+        if (! $this->app->environment('local')) {
+            return;
+        }
+
         Route::prefix('mail')
             ->middleware('web')
             ->namespace($this->namespace)
