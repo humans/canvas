@@ -8,10 +8,7 @@ class ConfirmationCodesController extends Controller
 {
     public function store()
     {
-        ConfirmationCode::create([
-            'email' => request('email'),
-            'code'  => sprintf("%06d", mt_rand(1, 999999)),
-        ]);
+        ConfirmationCode::create(['email' => request('email')]);
 
         return response(['response' => true], 201);
     }

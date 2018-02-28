@@ -17,7 +17,7 @@ class CreateConfirmationCodesTable extends Migration
             $table->increments('id');
 
             $table->string('email');
-            $table->string('code');
+            $table->string('code', 6);
 
             $table->timestamps();
         });
