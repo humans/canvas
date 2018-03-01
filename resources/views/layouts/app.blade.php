@@ -23,6 +23,7 @@
             ]) !!}
         </script>
     </head>
+
     <body class="[ font-sans leading-normal tracking-normal text-base text-black ]">
         <main id="app">
             @include('layouts.header')
@@ -40,6 +41,9 @@
 
         <script src="{{ mix('js/manifest.js') }}"></script>
         <script src="{{ mix('js/vendor.js') }}"></script>
+
+        @stack('scripts')
+
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

@@ -18,5 +18,6 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
            tailwind('./resources/assets/tailwind.js')
        ]
     })
+   .js('resources/assets/js/register.js', 'public/js')
    .js('resources/assets/js/app.js', 'public/js')
    .extract(['vue', 'axios'])

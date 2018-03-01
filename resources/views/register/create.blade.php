@@ -1,44 +1,55 @@
 @extends('layouts.app')
 
+@push('scripts')
+<script src="{{ mix('js/register.js') }}"></script>
+@endpush
+
 @section('content')
-    <section class="register-form">
-        <div class="wrapper [ max-w-sm mt-8 ]">
-            <h1 class="[ mb-4 ]">Register to {{ config('app.name') }}</h1>
+    <register-form>
+        <div class="confirm-email">
+            <form action="">
+            </form>
+        </div>
 
-            <form method="POST" action="{{ route('register.store') }}">
-                {{ csrf_field() }}
+        <section class="register-form" v-if="confirmed">
+            <div class="wrapper [ max-w-sm mt-8 ]">
+                <h1 class="[ mb-4 ]">Register to {{ config('app.name') }}</h1>
 
-                @textfield([
+                <form method="POST" action="{{ route('register.store') }}">
+                    {{ csrf_field() }}
+
+                    @textfield([
                     'label' => 'Name',
                     'name'  => 'name',
                     'utilities' => 'mt-8',
-                ])
+                    ])
 
-                @textfield([
+                    @textfield([
                     'label' => 'Username',
                     'name'  => 'username',
                     'utilities' => 'mt-8',
-                ])
+                    ])
 
-                <div class="password-fields [
-                        flex flex-col
-                        md:flex-row md:justify-between md:mt-8
-                    ]">
-                    @passwordfield([
+                    <div class="password-fields [
+                                flex flex-col
+                                md:flex-row md:justify-between md:mt-8
+                                ]">
+                        @passwordfield([
                         'label'     => 'Password',
                         'name'      => 'password',
                         'utilities' => 'mt-2 md:mt-0 md:mr-2',
-                    ])
+                        ])
 
-                    @passwordfield([
+                        @passwordfield([
                         'label'     => 'Repeat Password',
                         'name'      => 'password_confirmation',
                         'utilities' => 'mt-2 md:mt-0 md:ml-2',
-                    ])
-                </div>
+                        ])
+                    </div>
 
-                <button class="button [ mt-16 ]" type="submit">Register</button>
-            </form>
-        </div>
-    </section>
+                    <button class="button [ mt-16 ]" type="submit">Register</button>
+                </form>
+            </div>
+        </section>
+    </register-form>
 @endsection
