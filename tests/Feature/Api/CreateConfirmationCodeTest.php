@@ -5,7 +5,7 @@ namespace Tests\Feature\Api;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\EmailConfirmation;
+use App\Mail\ConfirmationCode;
 
 class CreateConfirmationCodeTest extends TestCase
 {
@@ -26,7 +26,7 @@ class CreateConfirmationCodeTest extends TestCase
             'email' => 'jaggy@artisan.studio',
         ]);
 
-        Mail::assertQueued(EmailConfirmation::class, function ($mail) {
+        Mail::assertQueued(ConfirmationCode::class, function ($mail) {
             return $mail->hasTo('jaggy@artisan.studio');
         });
     }
