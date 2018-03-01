@@ -24,6 +24,12 @@ class ConfirmationCode extends Model
         static::creating(function ($model) {
             $model->code = sprintf("%06d", mt_rand(1, 999999));
         });
+
+        static::created(function ($model) {
+            cookie()->queue(
+                cookie(static::EMAIL, $model->email, 60)
+            );
+        });
     }
 
     public function send()

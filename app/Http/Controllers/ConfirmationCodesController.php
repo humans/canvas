@@ -16,12 +16,12 @@ class ConfirmationCodesController extends Controller
     {
         $email = request()->validate([
             'email' => ['required', 'email', Rule::unique('users')],
+        ], [
+            'email.unique' => "The email is already a registered account."
         ]);
 
-        $code = ConfirmationCode::firstOrCreate($email)->send();
+        ConfirmationCode::firstOrCreate($email)->send();
 
-        return redirect()
-            ->route('register')
-            ->cookie(ConfirmationCode::EMAIL, $code->email, 60);
+        return redirect()->route('register');
     }
 }

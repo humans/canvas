@@ -29,7 +29,7 @@
                         Remember Me?
                     </label>
 
-                    <a class="[ ml-auto no-underline ]" href="{{ route('register') }}">Join Us</a>
+                    <a class="[ ml-auto no-underline ]" href="{{ route('confirmation-codes.create') }}">Join Us</a>
                 </div>
 
                 <button class="button [ mt-16 ]" type="submit">Login</button>
