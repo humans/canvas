@@ -32,7 +32,7 @@
 
                         <button class="button [ mt-16 ]" type="submit" :disabled="processing">
                             Confirm Email
-                        </button>
+                        <button>
                     </form>
 
                     @local

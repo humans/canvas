@@ -19,6 +19,7 @@ class CreateConfirmationCodesTable extends Migration
             $table->string('email');
             $table->string('code', 6);
 
+            $table->datetime('expires_at');
             $table->timestamps();
         });
     }

@@ -7,13 +7,11 @@
         <nav class="right [ ml-auto text-sm ]">
             @auth
                 <ul class="[ list-reset flex ]">
-                    @canImpersonate
-                        @impersonating
-                            <li><a href="{{ route('impersonate.leave') }}">End Impersonation</a></li>
-                        @else
-                            <li><a href="{{ route('admin.dashboard') }}">Admin</a></li>
-                        @endImpersonating
-                    @endCanImpersonate
+                    @impersonating
+                        <li><a href="{{ route('impersonate.leave') }}">End Impersonation</a></li>
+                    @else
+                        <li><a href="{{ route('admin.dashboard') }}">Admin</a></li>
+                    @endImpersonating
 
                     <li class="[ ml-16 ]"><a href="{{ route('logout') }}">Sign Out</a></li>
                 </ul>

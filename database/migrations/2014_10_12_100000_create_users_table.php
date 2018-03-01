@@ -18,10 +18,7 @@ class CreateUsersTable extends Migration
 
             $table->boolean('is_admin')->default(false);
 
-            $table->string('activation_token')->nullable();
             $table->rememberToken();
-
-            $table->datetime('activated_at')->nullable();
             $table->timestamps();
         });
     }

@@ -22,7 +22,8 @@ class ConfirmationCode extends Model
     public static function boot()
     {
         static::creating(function ($model) {
-            $model->code = sprintf("%06d", mt_rand(1, 999999));
+            $model->code       = sprintf("%06d", mt_rand(1, 999999));
+            $model->expires_at = now();
         });
 
         static::created(function ($model) {
