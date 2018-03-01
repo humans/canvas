@@ -2,7 +2,17 @@ import axios from 'axios'
 import Vue from 'vue'
 
 Vue.component('register-form', {
-    props: ['email'],
+    props: ['email', 'errors'],
+
+    computed: {
+        hasErrors() {
+            return !! Object.keys(JSON.parse(this.errors)).length
+        },
+
+        showProfileForm() {
+            return this.hasErrors || this.confirmed
+        },
+    },
 
     data () {
         return {
@@ -15,7 +25,7 @@ Vue.component('register-form', {
 
     methods: {
         confirm() {
-            const url = this.$refs['confirm-email'].action
+            const url = this.$refs.confirmationForm.action
 
             this.processing = true
 

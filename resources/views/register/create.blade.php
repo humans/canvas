@@ -5,10 +5,10 @@
 @endpush
 
 @section('content')
-    <register-form email="{{ $email }}" inline-template>
+    <register-form email="{{ $email }}" errors="{{ $errors }}" inline-template>
         <section class="registration">
             <div class="wrapper [ max-w-sm mt-8 ]">
-                <section class="confirm-email" v-if="! confirmed">
+                <section class="confirm-email" v-if="! showProfileForm">
                     <h1 class="[ mb-4 ]">Check your email</h1>
 
                     <p>
@@ -17,7 +17,7 @@
 
                     <form method="POST"
                           action="{{ route('api.email.confirm') }}"
-                          ref="confirm-email" @submit.prevent="confirm">
+                          ref="confirmationForm" @submit.prevent="confirm">
                         @csrf
 
                         @textfield([
@@ -27,7 +27,7 @@
                             'utilities' => 'mt-16',
                         ])
 
-                        <p class="[ text-sm ]" v-if="error" v-html="error"></p>
+                        <p class="[ text-sm ]" v-if="error" v-text="error"></p>
 
 
                         <button class="button [ mt-16 ]" type="submit" :disabled="processing">
@@ -42,43 +42,43 @@
                     @endlocal
                 </section>
 
-                <section class="register-form" v-if="confirmed">
-                        <h1 class="[ mb-4 ]">Register to {{ config('app.name') }}</h1>
+                <section class="profile" v-if="showProfileForm">
+                    <h1 class="[ mb-4 ]">Register to {{ config('app.name') }}</h1>
 
-                        <form method="POST" action="{{ route('register.store') }}">
-                            @csrf
+                    <form method="POST" action="{{ route('register.store') }}">
+                        @csrf
 
-                            @textfield([
-                                'label'     => 'Name',
-                                'name'      => 'name',
-                                'utilities' => 'mt-16',
+                        @textfield([
+                            'label'     => 'Name',
+                            'name'      => 'name',
+                            'utilities' => 'mt-16',
+                        ])
+
+                        @textfield([
+                            'label'     => 'Username',
+                            'name'      => 'username',
+                            'utilities' => 'mt-8',
+                        ])
+
+                        <div class="password-fields [
+                                        flex flex-col
+                                        md:flex-row md:justify-between md:mt-8
+                                    ]">
+                            @passwordfield([
+                                'label'     => 'Password',
+                                'name'      => 'password',
+                                'utilities' => 'mt-2 md:mt-0 md:mr-2',
                             ])
 
-                            @textfield([
-                                'label'     => 'Username',
-                                'name'      => 'username',
-                                'utilities' => 'mt-8',
+                            @passwordfield([
+                                'label'     => 'Repeat Password',
+                                'name'      => 'password_confirmation',
+                                'utilities' => 'mt-2 md:mt-0 md:ml-2',
                             ])
+                        </div>
 
-                            <div class="password-fields [
-                                            flex flex-col
-                                            md:flex-row md:justify-between md:mt-8
-                                        ]">
-                                @passwordfield([
-                                    'label'     => 'Password',
-                                    'name'      => 'password',
-                                    'utilities' => 'mt-2 md:mt-0 md:mr-2',
-                                ])
-
-                                @passwordfield([
-                                    'label'     => 'Repeat Password',
-                                    'name'      => 'password_confirmation',
-                                    'utilities' => 'mt-2 md:mt-0 md:ml-2',
-                                ])
-                            </div>
-
-                            <button class="button [ mt-16 ]" type="submit">Register</button>
-                        </form>
+                        <button class="button [ mt-16 ]" type="submit">Register</button>
+                    </form>
                 </section>
             </div>
         </section>

@@ -25,7 +25,7 @@ class RegisterRequest extends FormRequest
         ])->all();
     }
 
-    public function attributes()
+    public function data()
     {
         return [
             'name'     => $this->name,

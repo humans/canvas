@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Validation\Rule;
 use App\Http\Middleware\EmailConfirmed;
 use App\Http\Requests\RegisterRequest;
 use App\ConfirmationCode;
@@ -24,7 +23,7 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        User::create($request->attributes())
+        User::create($request->data())
             ->login()
             ->sendWelcomeMail()
             ->deleteConfirmationCode();

@@ -1,12 +1,21 @@
-<h1>Join {{ config('app.name') }}</h1>
+@extends('layouts.app')
 
-<p>Please confirm your email address first.</p>
+@section('content')
+    <div class="wrapper">
+        <h1>Join {{ config('app.name') }}</h1>
 
-<form action="{{ route('confirmation-codes.store') }}" method="POST">
-    @csrf
+        <p>Please confirm your email address first.</p>
 
-    <input name="email" type="text">
+        <form action="{{ route('confirmation-codes.store') }}" method="POST">
+            @csrf
 
-    <button>Confirm</button>
-</form>
+            @textfield([
+                'label' => 'Email Address',
+                'name'  => 'email',
+                'utilities' => 'mt-8',
+            ])
 
+            <button class="button [ mt-16 ]">Confirm</button>
+        </form>
+    </div>
+@endsection
