@@ -18,12 +18,12 @@ class CreateConfirmationCodeTest extends TestCase
         Mail::fake();
 
         $this->post('/confirmation-codes', [
-            'email' => 'jaggy@artisan.studio',
+            'email' => 'jaggy@artisan.studio'
         ])->assertCookie(ConfirmationCode::EMAIL)
           ->assertRedirect('/register');
 
         $this->assertDatabaseHas('confirmation_codes', [
-            'email' => 'jaggy@artisan.studio',
+            'email' => 'jaggy@artisan.studio'
         ]);
 
         Mail::assertQueued(ConfirmationCodeMail::class, function ($mail) {
@@ -35,9 +35,19 @@ class CreateConfirmationCodeTest extends TestCase
     function dont_allow_an_empty_email_address()
     {
         $this->post('/confirmation-codes', [
-            'email' => null,
+            'email' => null
         ])->assertSessionHasErrors([
-            'email',
+            'email'
+        ]);
+    }
+
+    /** @test **/
+    function dont_allow_an_invalid_email_address()
+    {
+        $this->post('/confirmation-codes', [
+            'email' => 'not.an.email.address'
+        ])->assertSessionHasErrors([
+            'email'
         ]);
     }
 
@@ -49,7 +59,7 @@ class CreateConfirmationCodeTest extends TestCase
         ConfirmationCode::create(['email' => 'jaggy@artisan.studio']);
 
         $this->post('/confirmation-codes', [
-            'email' => 'jaggy@artisan.studio',
+            'email' => 'jaggy@artisan.studio'
         ])->assertRedirect('/register');
 
         $this->assertCount(1, ConfirmationCode::get());

@@ -14,7 +14,7 @@ class ConfirmationCodesController extends Controller
     public function store()
     {
         $email = request()->validate([
-            'email' => 'required'
+            'email' => ['required', 'email'],
         ]);
 
         $code = ConfirmationCode::firstOrCreate($email)->send();

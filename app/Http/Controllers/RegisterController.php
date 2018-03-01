@@ -35,11 +35,13 @@ class RegisterController extends Controller
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
-        $user = User::create($this->request())
+        User::create($this->request())
               ->sendWelcomeMail()
               ->login();
 
-        return redirect()->route('home');
+        return redirect()
+            ->withCookie(cookie()->forget(ConfirmationCode::EMAIL))
+            ->route('home');
     }
 
     private function request()

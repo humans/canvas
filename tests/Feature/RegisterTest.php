@@ -34,7 +34,8 @@ class RegisterTest extends TestCase
             'name' => 'Jaggy Gauran'
         ]), [
             ConfirmationCode::EMAIL => encrypt('i.am@jag.gy')
-        ])->assertRedirect('/');
+        ])->assertRedirect('/')
+          ->assertCookieMissing(ConfirmationCode::EMAIL);
 
         $this->assertDatabaseHas('users', [
             'name'  => 'Jaggy Gauran',
@@ -63,6 +64,18 @@ class RegisterTest extends TestCase
             'password' => null
         ]))->assertSessionHasErrors([
             'password'
+        ]);
+    }
+
+    /** @test **/
+    function dont_allow_duplicate_emails()
+    {
+        factory(User::class)->create(['email' => 'jaggy@artisan.studio']);
+
+        $this->post('/register', $this->factory([
+            'email' => 'jaggy@artisan.studio',
+        ]))->assertSessionHasErrors([
+            'email'
         ]);
     }
 
