@@ -7,7 +7,7 @@
 @section('content')
     <register-form email="{{ $email }}" errors="{{ $errors }}" inline-template>
         <section class="registration">
-            <div class="wrapper [ max-w-sm mt-8 ]">
+            <div class="wrapper [ max-w-sm mt-32 ]">
                 <section class="confirm-email" v-if="! showProfileForm">
                     <h1 class="[ mb-4 ]">Check your email</h1>
 

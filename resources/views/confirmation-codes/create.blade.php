@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="wrapper">
+    <div class="wrapper [ max-w-sm mt-32 ]">
         <h1>Join {{ config('app.name') }}</h1>
 
         <p>Please confirm your email address first.</p>

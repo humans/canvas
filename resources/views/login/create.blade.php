@@ -23,11 +23,13 @@
                     'utilities' => 'mt-8',
                 ])
 
-                <div class="field [ mt-8 ]">
+                <div class="field [ mt-8 flex ]">
                     <label>
                         <input type="checkbox" name="remember">
                         Remember Me?
                     </label>
+
+                    <a class="[ ml-auto no-underline ]" href="{{ route('register') }}">Join Us</a>
                 </div>
 
                 <button class="button [ mt-16 ]" type="submit">Login</button>
