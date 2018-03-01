@@ -9,6 +9,16 @@ class ConfirmationCode extends Model
 {
     const EMAIL = 'e';
 
+    public static function to()
+    {
+        return request()->cookie(static::EMAIL);
+    }
+
+    public static function whisper()
+    {
+        return static::where(['email' => static::to()])->first()->code;
+    }
+
     public static function boot()
     {
         static::creating(function ($model) {

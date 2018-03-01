@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Validation\Rule;
+use App\Http\Middleware\EmailConfirmed;
 use App\Http\Requests\RegisterRequest;
 use App\ConfirmationCode;
 use App\User;
@@ -11,23 +12,13 @@ class RegisterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest')->only('create', 'store');
+        $this->middleware(['guest', EmailConfirmed::class]);
     }
 
     public function create()
     {
-        if (! $email = request()->cookie(ConfirmationCode::EMAIL)) {
-            return redirect()->route('confirmation-codes.create');
-        }
-
-        if(! $code = ConfirmationCode::where('email', $email)->first()) {
-            return redirect()->route('confirmation-codes.create');
-        }
-
-
         return view('register.create', [
-            'email' => $email,
-            'code'  => $code->code,
+            'email' => ConfirmationCode::to()
         ]);
     }
 
@@ -36,10 +27,8 @@ class RegisterController extends Controller
         User::create($request->attributes())
             ->login()
             ->sendWelcomeMail()
-            ->removeConfirmationCode();
+            ->deleteConfirmationCode();
 
-        return redirect()
-            ->route('home')
-            ->cookie(cookie()->forget(ConfirmationCode::EMAIL));
+        return redirect()->route('home');
     }
 }

@@ -27,4 +27,12 @@ class ShowRegisterPageTest extends TestCase
             ->get('/register')
             ->assertRedirect('/get-started');
     }
+
+    /** @test **/
+    function redirect_to_the_email_confirmation_when_the_email_doesnt_exist()
+    {
+        $this->call('GET', '/register', [], [
+            ConfirmationCode::EMAIL => encrypt('not.an.existing.email@dot.com'),
+        ])->assertRedirect('/get-started');
+    }
 }

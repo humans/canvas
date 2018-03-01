@@ -22,9 +22,11 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
     ];
 
-    public function removeConfirmationCode()
+    public function deleteConfirmationCode()
     {
         ConfirmationCode::where('email', $this->email)->delete();
+
+        cookie()->queue(cookie()->forget(ConfirmationCode::EMAIL));
 
         return $this;
     }

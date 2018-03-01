@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Welcome;
 use App\User;
@@ -12,7 +12,7 @@ use App\ConfirmationCode;
 
 class RegisterTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithoutMiddleware;
 
     function factory(array $attributes = [])
     {
@@ -34,7 +34,7 @@ class RegisterTest extends TestCase
         $this->call('POST', '/register', $this->factory([
             'name' => 'Jaggy Gauran'
         ]), [
-            ConfirmationCode::EMAIL => encrypt('i.am@jag.gy')
+            ConfirmationCode::EMAIL => 'i.am@jag.gy'
         ])->assertRedirect('/');
 
         $this->assertDatabaseHas('users', [
@@ -72,20 +72,6 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
-    function dont_allow_duplicate_emails()
-    {
-        factory(User::class)->create([
-            'email' => 'i.am@jag.gy'
-        ]);
-
-        $this->call('POST', '/register', $this->factory(), [
-            ConfirmationCode::EMAIL => encrypt('i.am@jag.gy')
-        ])->assertSessionHasErrors([
-            'email'
-        ]);
-    }
-
-    /** @test **/
     function dont_allow_different_passwords()
     {
         $this->post('/register', $this->factory([
@@ -118,6 +104,20 @@ class RegisterTest extends TestCase
     }
 
     /** @test **/
+    function dont_allow_duplicate_usernames()
+    {
+        factory(User::class)->create([
+            'username' => 'jaggy'
+        ]);
+
+        $this->post('/register', $this->factory([
+            'username' => 'jaggy'
+        ]))->assertSessionHasErrors([
+            'username'
+        ]);
+    }
+
+    /** @test **/
     function dont_allow_a_username_that_starts_with_a_number()
     {
         $this->post('/register', $this->factory([
@@ -144,6 +144,20 @@ class RegisterTest extends TestCase
             'username' => 'u$ername',
         ]))->assertSessionHasErrors([
             'username'
+        ]);
+    }
+
+    /** @test **/
+    function dont_allow_duplicate_emails()
+    {
+        factory(User::class)->create([
+            'email' => 'i.am@jag.gy'
+        ]);
+
+        $this->call('POST', '/register', $this->factory(), [
+            ConfirmationCode::EMAIL => 'i.am@jag.gy'
+        ])->assertSessionHasErrors([
+            'email'
         ]);
     }
 }

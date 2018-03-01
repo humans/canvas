@@ -37,7 +37,7 @@
 
                     @local
                     <p class="[ text-sm mt-16 text-grey-dark ]">
-                        Navi here! Your confirmation code is: <strong>{{ $code }}</strong>.
+                        Navi here! Your confirmation code is: <strong>{{ App\ConfirmationCode::whisper() }}</strong>.
                     </p>
                     @endlocal
                 </section>

@@ -13,7 +13,7 @@ class RegisterRequest extends FormRequest
         return [
             'name'     => 'required',
             'email'    => Rule::unique('users'),
-            'username' => ['required', new Username],
+            'username' => ['required', Rule::unique('users'), new Username],
             'password' => ['required', 'confirmed', 'min:8'],
         ];
     }
