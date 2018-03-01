@@ -6,8 +6,21 @@ if (app()->environment('local')) {
 
 Route::get('/', 'HomeController')->name('home');
 
+/*
+|----------------------------------------------------------
+| Registration
+|----------------------------------------------------------
+|
+| This includes the email confirmation shebang.
+|
+*/
+
 Route::get('register', 'RegisterController@create')->name('register');
 Route::post('register', 'RegisterController@store')->name('register.store');
+
+Route::resource('confirmation-codes', 'ConfirmationCodesController', [
+    'only' => ['store'],
+]);
 
 /*
 |----------------------------------------------------------

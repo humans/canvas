@@ -14,7 +14,3 @@
 Route::middleware('auth:api')->get('me', function () {
     return request()->user();
 });
-
-Route::resource('confirmation-codes', 'ConfirmationCodesController', [
-    'only' => ['store'],
-]);

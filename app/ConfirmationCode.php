@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\EmailConfirmation;
+use App\Mail\ConfirmationCode as ConfirmationCodeMail;
 
 class ConfirmationCode extends Model
 {
@@ -16,6 +16,8 @@ class ConfirmationCode extends Model
 
     public function send()
     {
-        Mail::to($this->email)->queue(new EmailConfirmation($this->code));
+        Mail::to($this->email)->queue(
+            new ConfirmationCodeMail($this->code)
+        );
     }
 }

@@ -16,7 +16,7 @@ class CreateConfirmationCodeTest extends TestCase
     {
         Mail::fake();
 
-        $this->post('/api/confirmation-codes', [
+        $this->post('/confirmation-codes', [
             'email' => 'jaggy@artisan.studio',
         ])->assertJson([
             'response' => true,
@@ -34,8 +34,14 @@ class CreateConfirmationCodeTest extends TestCase
     /** @test **/
     function dont_allow_an_empty_email_address()
     {
-        $this->json('POST', '/api/confirmation-codes', [
+        $this->post('/confirmation-codes', [
             'email' => null,
-        ])->assertStatus(422);
+        ])->assertSessionHasErrors([
+        ]);
+    }
+
+    /** @test **/
+    function resend_the_confirmation_code_if_the_email_was_already_used()
+    {
     }
 }
