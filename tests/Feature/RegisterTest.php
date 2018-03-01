@@ -6,8 +6,8 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Mail;
-use App\User;
 use App\Mail\Welcome;
+use App\User;
 use App\ConfirmationCode;
 
 class RegisterTest extends TestCase
@@ -17,7 +17,6 @@ class RegisterTest extends TestCase
     function factory(array $attributes = [])
     {
         return $attributes + [
-            'email'                 => 'validemail@email.com',
             'username'              => 'valid.username',
             'name'                  => 'Valid Name',
             'password'              => 'some.password@password$$$',
@@ -30,15 +29,20 @@ class RegisterTest extends TestCase
     {
         Mail::fake();
 
+        ConfirmationCode::create(['email' => 'i.am@jag.gy']);
+
         $this->call('POST', '/register', $this->factory([
             'name' => 'Jaggy Gauran'
         ]), [
             ConfirmationCode::EMAIL => encrypt('i.am@jag.gy')
-        ])->assertRedirect('/')
-          ->assertCookieMissing(ConfirmationCode::EMAIL);
+        ])->assertRedirect('/');
 
         $this->assertDatabaseHas('users', [
             'name'  => 'Jaggy Gauran',
+            'email' => 'i.am@jag.gy',
+        ]);
+
+        $this->assertDatabaseMissing('confirmation_codes', [
             'email' => 'i.am@jag.gy',
         ]);
 
@@ -70,11 +74,13 @@ class RegisterTest extends TestCase
     /** @test **/
     function dont_allow_duplicate_emails()
     {
-        factory(User::class)->create(['email' => 'jaggy@artisan.studio']);
+        factory(User::class)->create([
+            'email' => 'i.am@jag.gy'
+        ]);
 
-        $this->post('/register', $this->factory([
-            'email' => 'jaggy@artisan.studio',
-        ]))->assertSessionHasErrors([
+        $this->call('POST', '/register', $this->factory(), [
+            ConfirmationCode::EMAIL => encrypt('i.am@jag.gy')
+        ])->assertSessionHasErrors([
             'email'
         ]);
     }

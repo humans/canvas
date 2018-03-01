@@ -22,6 +22,13 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
     ];
 
+    public function removeConfirmationCode()
+    {
+        ConfirmationCode::where('email', $this->email)->delete();
+
+        return $this;
+    }
+
     public function sendWelcomeMail()
     {
         Mail::to($this->email)->queue(new Welcome($this));

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Rules\Username;
+use Illuminate\Validation\Rule;
+use App\Http\Requests\RegisterRequest;
 use App\ConfirmationCode;
 use App\User;
 
@@ -19,7 +20,10 @@ class RegisterController extends Controller
             return redirect()->route('confirmation-codes.create');
         }
 
-        $code = ConfirmationCode::where('email', $email)->first();
+        if(! $code = ConfirmationCode::where('email', $email)->first()) {
+            return redirect()->route('confirmation-codes.create');
+        }
+
 
         return view('register.create', [
             'email' => $email,
@@ -27,30 +31,15 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(RegisterRequest $request)
     {
-        request()->validate([
-            'name'     => 'required',
-            'username' => ['required', new Username],
-            'password' => ['required', 'confirmed', 'min:8'],
-        ]);
-
-        User::create($this->request())
-              ->sendWelcomeMail()
-              ->login();
+        User::create($request->attributes())
+            ->login()
+            ->sendWelcomeMail()
+            ->removeConfirmationCode();
 
         return redirect()
-            ->withCookie(cookie()->forget(ConfirmationCode::EMAIL))
-            ->route('home');
-    }
-
-    private function request()
-    {
-        return [
-            'name'     => request('name'),
-            'username' => request('username'),
-            'email'    => request()->cookie(ConfirmationCode::EMAIL),
-            'password' => bcrypt(request('password')),
-        ];
+            ->route('home')
+            ->cookie(cookie()->forget(ConfirmationCode::EMAIL));
     }
 }

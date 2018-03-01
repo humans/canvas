@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use App\ConfirmationCode;
+use App\User;
 use App\Mail\ConfirmationCode as ConfirmationCodeMail;
 
 class CreateConfirmationCodeTest extends TestCase
@@ -46,6 +47,20 @@ class CreateConfirmationCodeTest extends TestCase
     {
         $this->post('/confirmation-codes', [
             'email' => 'not.an.email.address'
+        ])->assertSessionHasErrors([
+            'email'
+        ]);
+    }
+
+    /** @test **/
+    function dont_allow_duplicate_emails()
+    {
+        factory(User::class)->create([
+            'email' => 'jaggy@artisan.studio'
+        ]);
+
+        $this->post('/confirmation-codes', [
+            'email' => 'jaggy@artisan.studio'
         ])->assertSessionHasErrors([
             'email'
         ]);
