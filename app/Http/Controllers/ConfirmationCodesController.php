@@ -6,14 +6,22 @@ use App\ConfirmationCode;
 
 class ConfirmationCodesController extends Controller
 {
+    public function create()
+    {
+        return view('confirmation-codes.create');
+    }
+
     public function store()
     {
         $email = request()->validate([
             'email' => 'required'
         ]);
 
-        ConfirmationCode::create($email)->send();
+        $code = ConfirmationCode::firstOrCreate($email)->send();
 
-        return response(['response' => true], 201);
+        return redirect()
+            ->route('register')
+            ->cookie(ConfirmationCode::TIMESTAMP, now(), 60)
+            ->cookie(ConfirmationCode::EMAIL, $code->email, 60);
     }
 }

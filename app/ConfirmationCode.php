@@ -7,6 +7,9 @@ use App\Mail\ConfirmationCode as ConfirmationCodeMail;
 
 class ConfirmationCode extends Model
 {
+    const TIMESTAMP = 'e-ts';
+    const EMAIL     = 'e';
+
     public static function boot()
     {
         static::creating(function ($model) {
@@ -19,5 +22,7 @@ class ConfirmationCode extends Model
         Mail::to($this->email)->queue(
             new ConfirmationCodeMail($this->code)
         );
+
+        return $this;
     }
 }

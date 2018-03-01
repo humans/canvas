@@ -1,11 +1,12 @@
 <?php
 
-namespace Tests\Feature\Api;
+namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ConfirmationCode;
+use App\ConfirmationCode;
+use App\Mail\ConfirmationCode as ConfirmationCodeMail;
 
 class CreateConfirmationCodeTest extends TestCase
 {
@@ -18,15 +19,15 @@ class CreateConfirmationCodeTest extends TestCase
 
         $this->post('/confirmation-codes', [
             'email' => 'jaggy@artisan.studio',
-        ])->assertJson([
-            'response' => true,
-        ])->assertStatus(201);
+        ])->assertCookie(ConfirmationCode::EMAIL)
+          ->assertCookie(ConfirmationCode::TIMESTAMP)
+          ->assertRedirect('/register');
 
         $this->assertDatabaseHas('confirmation_codes', [
             'email' => 'jaggy@artisan.studio',
         ]);
 
-        Mail::assertQueued(ConfirmationCode::class, function ($mail) {
+        Mail::assertQueued(ConfirmationCodeMail::class, function ($mail) {
             return $mail->hasTo('jaggy@artisan.studio');
         });
     }
@@ -37,11 +38,25 @@ class CreateConfirmationCodeTest extends TestCase
         $this->post('/confirmation-codes', [
             'email' => null,
         ])->assertSessionHasErrors([
+            'email',
         ]);
     }
 
     /** @test **/
     function resend_the_confirmation_code_if_the_email_was_already_used()
     {
+        Mail::fake();
+
+        ConfirmationCode::create(['email' => 'jaggy@artisan.studio']);
+
+        $this->post('/confirmation-codes', [
+            'email' => 'jaggy@artisan.studio',
+        ])->assertRedirect('/register');
+
+        $this->assertCount(1, ConfirmationCode::get());
+
+        Mail::assertQueued(ConfirmationCodeMail::class, function ($mail) {
+            return $mail->hasTo('jaggy@artisan.studio');
+        });
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Rules\Username;
+use App\ConfirmationCode;
 use App\User;
 
 class RegisterController extends Controller
@@ -14,6 +15,11 @@ class RegisterController extends Controller
 
     public function create()
     {
+        // Move this into a middleware.
+        if (! request()->hasCookie(ConfirmationCode::EMAIL)) {
+            return redirect()->route('confirmation-codes.create');
+        }
+
         return view('register.create');
     }
 

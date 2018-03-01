@@ -11,22 +11,18 @@
                 @textfield([
                     'label' => 'Name',
                     'name'  => 'name',
+                    'utilities' => 'mt-8',
                 ])
 
                 @textfield([
                     'label' => 'Username',
                     'name'  => 'username',
-                ])
-
-                @textfield([
-                    'label'     => 'Email Address',
-                    'name'      => 'email',
-                    'utilities' => 'mt-2',
+                    'utilities' => 'mt-8',
                 ])
 
                 <div class="password-fields [
                         flex flex-col
-                        md:flex-row md:justify-between md:mt-2
+                        md:flex-row md:justify-between md:mt-8
                     ]">
                     @passwordfield([
                         'label'     => 'Password',
@@ -41,7 +37,7 @@
                     ])
                 </div>
 
-                <button class="button [ mt-4 ]" type="submit">Register</button>
+                <button class="button [ mt-16 ]" type="submit">Register</button>
             </form>
         </div>
     </section>
