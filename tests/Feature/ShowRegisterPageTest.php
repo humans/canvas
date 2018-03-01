@@ -14,8 +14,7 @@ class ShowRegisterPageTest extends TestCase
     function show_the_registration_page_when_the_register_cookie_exists()
     {
         $this->call('GET', '/register', [], [
-            ConfirmationCode::EMAIL     => encrypt('jaggy@artisan.studio'),
-            ConfirmationCode::TIMESTAMP => now(),
+            ConfirmationCode::EMAIL => 'jaggy@artisan.studio',
         ])->assertSuccessful();
     }
 

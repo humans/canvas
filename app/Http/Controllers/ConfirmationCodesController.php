@@ -21,7 +21,6 @@ class ConfirmationCodesController extends Controller
 
         return redirect()
             ->route('register')
-            ->cookie(ConfirmationCode::TIMESTAMP, now(), 60)
             ->cookie(ConfirmationCode::EMAIL, $code->email, 60);
     }
 }

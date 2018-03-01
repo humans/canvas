@@ -20,7 +20,6 @@ class CreateConfirmationCodeTest extends TestCase
         $this->post('/confirmation-codes', [
             'email' => 'jaggy@artisan.studio',
         ])->assertCookie(ConfirmationCode::EMAIL)
-          ->assertCookie(ConfirmationCode::TIMESTAMP)
           ->assertRedirect('/register');
 
         $this->assertDatabaseHas('confirmation_codes', [

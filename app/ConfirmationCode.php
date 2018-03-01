@@ -7,8 +7,7 @@ use App\Mail\ConfirmationCode as ConfirmationCodeMail;
 
 class ConfirmationCode extends Model
 {
-    const TIMESTAMP = 'e-ts';
-    const EMAIL     = 'e';
+    const EMAIL = 'e';
 
     public static function boot()
     {
