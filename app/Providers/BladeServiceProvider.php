@@ -13,6 +13,10 @@ class BladeServiceProvider extends \Illuminate\Support\ServiceProvider
         Blade::include('components.fields.text', 'textfield');
         Blade::include('components.fields.password', 'passwordfield');
         Blade::include('components.errors', 'errors');
+
+        Blade::if('local', function () {
+            return app()->environment('local');
+        });
     }
 
     public function register()

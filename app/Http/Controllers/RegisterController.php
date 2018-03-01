@@ -15,28 +15,31 @@ class RegisterController extends Controller
 
     public function create()
     {
-        // Move this into a middleware.
-        if (! request()->hasCookie(ConfirmationCode::EMAIL)) {
+        if (! $email = request()->cookie(ConfirmationCode::EMAIL)) {
             return redirect()->route('confirmation-codes.create');
         }
 
-        return view('register.create');
+        $code = ConfirmationCode::where('email', $email)->first();
+
+        return view('register.create', [
+            'email' => $email,
+            'code'  => $code->code,
+        ]);
     }
 
     public function store()
     {
         request()->validate([
             'name'     => 'required',
-            'email'    => ['required', 'email'],
             'username' => ['required', new Username],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
-        $user = User::create($this->request())->sendActivationMail();
+        $user = User::create($this->request())
+              ->sendWelcomeMail()
+              ->login();
 
-        session($user->only('email', 'activation_token'));
-
-        return redirect()->route('confirm-email');
+        return redirect()->route('home');
     }
 
     private function request()
@@ -44,7 +47,7 @@ class RegisterController extends Controller
         return [
             'name'     => request('name'),
             'username' => request('username'),
-            'email'    => request('email'),
+            'email'    => request()->cookie(ConfirmationCode::EMAIL),
             'password' => bcrypt(request('password')),
         ];
     }

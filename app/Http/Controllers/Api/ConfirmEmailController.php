@@ -12,6 +12,13 @@ class ConfirmEmailController extends Controller
             'email', 'code'
         ]));
 
-        return ['response' => $code->exists()];
+        if (! $code->exists()) {
+            return response([
+                'message' => "The confirmation code was incorrect."
+            ], 422);
+        }
+
+
+        return ['message' => 'Your email address has been confirmed.'];
     }
 }

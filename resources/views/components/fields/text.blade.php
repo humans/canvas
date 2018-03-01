@@ -10,7 +10,12 @@
            class="field-input [ w-full py-8 px-4 ]"
            type="{{ $type ?? 'text' }}"
            name="{{ $name }}" value="{{ old($name, $value ?? null) }}"
-           placeholder="{{ $placeholder ?? null }}">
+           placeholder="{{ $placeholder ?? null }}"
+
+           @if($model ?? false)
+                v-model="{{ $model }}"
+           @endif
+           >
 
     @if($errors->has($name))
         <p class="field-message">{{ $errors->get($name)[0] }}</p>

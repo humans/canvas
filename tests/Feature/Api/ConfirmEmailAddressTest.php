@@ -19,8 +19,8 @@ class ConfirmEmailAddressTest extends TestCase
             'email' => 'jaggy@artisan.studio',
             'code'  => $code->code,
         ])->assertJson([
-            'response' => true,
-        ]);
+            'message' => 'Your email address has been confirmed.',
+        ])->assertStatus(200);
     }
 
     /** @test **/
@@ -30,7 +30,7 @@ class ConfirmEmailAddressTest extends TestCase
             'email' => 'jaggy@artisan.studio',
             'code'  => 'different',
         ])->assertJson([
-            'response' => false,
-        ]);
+            'message' => "The confirmation code was incorrect.",
+        ])->assertStatus(422);
     }
 }

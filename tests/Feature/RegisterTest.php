@@ -2,12 +2,13 @@
 
 namespace Tests\Feature;
 
-use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\Activation;
+use App\User;
+use App\Mail\Welcome;
+use App\ConfirmationCode;
 
 class RegisterTest extends TestCase
 {
@@ -29,23 +30,18 @@ class RegisterTest extends TestCase
     {
         Mail::fake();
 
-        $this->post('/register', $this->factory([
-            'name'     => 'Jaggy Gauran',
-            'email'    => 'i.am@jag.gy',
-        ]))->assertSessionHas([
-            'email', 'activation_token',
-        ])->assertRedirect(
-            '/confirm-email'
-        );
+        $this->call('POST', '/register', $this->factory([
+            'name' => 'Jaggy Gauran'
+        ]), [
+            ConfirmationCode::EMAIL => encrypt('i.am@jag.gy')
+        ])->assertRedirect('/');
 
         $this->assertDatabaseHas('users', [
             'name'  => 'Jaggy Gauran',
             'email' => 'i.am@jag.gy',
         ]);
 
-        $this->assertNotNull(User::first()->activation_token);
-
-        Mail::assertSent(Activation::class, function ($mail) {
+        Mail::assertQueued(Welcome::class, function ($mail) {
             return $mail->hasTo('i.am@jag.gy');
         });
     }
@@ -57,16 +53,6 @@ class RegisterTest extends TestCase
             'name' => null
         ]))->assertSessionHasErrors([
             'name'
-        ]);
-    }
-
-    /** @test **/
-    function dont_allow_an_empty_email_address()
-    {
-        $this->post('/register', $this->factory([
-            'email' => null
-        ]))->assertSessionHasErrors([
-            'email'
         ]);
     }
 
@@ -99,16 +85,6 @@ class RegisterTest extends TestCase
             'password_confirmation' => 'short',
         ]))->assertSessionHasErrors([
             'password',
-        ]);
-    }
-
-    /** @test **/
-    function dont_allow_invalid_emails()
-    {
-        $this->post('/register', $this->factory([
-            'email' => 'notanemail'
-        ]))->assertSessionHasErrors([
-            'email'
         ]);
     }
 

@@ -41,12 +41,3 @@ Route::get('login', 'LoginController@create')->name('login');
 Route::get('logout', 'LoginController@destroy')->name('logout');
 
 Route::impersonate();
-
-/*
-|----------------------------------------------------------
-| Activation
-|----------------------------------------------------------
-*/
-
-Route::get('activate', 'ActivateUserController')->name('activate');
-Route::get('confirm-email', 'EmailConfirmationController')->name('confirm-email');
