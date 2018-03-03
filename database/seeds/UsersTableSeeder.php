@@ -7,7 +7,7 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
-        factory(User::class)->states('inactive')->create([
+        User::factory()->states('inactive')->create([
             'name'     => 'Jake Peralta',
             'username' => 'jake',
             'email'    => 'jake@nine-nine.nyc',

@@ -13,7 +13,7 @@ class ConfirmEmailAddressTest extends TestCase
     /** @test **/
     function confirm_the_email_address_and_return_true()
     {
-        $code = ConfirmationCode::create(['email' => 'jaggy@artisan.studio']);
+        $code = ConfirmationCode::factory()->create(['email' => 'jaggy@artisan.studio']);
 
         $this->post('/api/confirm-email', [
             'email' => 'jaggy@artisan.studio',

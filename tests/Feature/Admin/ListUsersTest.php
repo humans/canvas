@@ -13,7 +13,7 @@ class ListUsersTest extends TestCase
     /** @test **/
     function show_a_list_of_the_users()
     {
-        $admin = factory(User::class)->states('admin')->create();
+        $admin = User::factory()->states('admin')->create();
 
         $this->actingAs($admin)
             ->get('/admin/users')

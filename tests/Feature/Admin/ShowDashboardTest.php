@@ -13,7 +13,7 @@ class ShowDashboardTest extends TestCase
     /** @test **/
     function show_the_admin_dashboard()
     {
-        $admin = factory(User::class)->states('admin')->create();
+        $admin = User::factory()->states('admin')->create();
 
         $this
             ->actingAs($admin)
@@ -32,7 +32,7 @@ class ShowDashboardTest extends TestCase
     /** @test **/
     function dont_allow_non_admins_to_access_the_page()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->get('/admin/dashboard')

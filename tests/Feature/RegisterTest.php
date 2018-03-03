@@ -29,7 +29,7 @@ class RegisterTest extends TestCase
     {
         Mail::fake();
 
-        ConfirmationCode::create(['email' => 'i.am@jag.gy']);
+        ConfirmationCode::factory()->create(['email' => 'i.am@jag.gy']);
 
         $this->call('POST', '/register', $this->factory([
             'name' => 'Jaggy Gauran'

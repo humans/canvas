@@ -55,7 +55,7 @@ class CreateConfirmationCodeTest extends TestCase
     /** @test **/
     function dont_allow_duplicate_emails()
     {
-        factory(User::class)->create([
+        User::factory()->create([
             'email' => 'jaggy@artisan.studio'
         ]);
 
@@ -71,7 +71,7 @@ class CreateConfirmationCodeTest extends TestCase
     {
         Mail::fake();
 
-        ConfirmationCode::create(['email' => 'jaggy@artisan.studio']);
+        ConfirmationCode::factory()->create(['email' => 'jaggy@artisan.studio']);
 
         $this->post('/confirmation-codes', [
             'email' => 'jaggy@artisan.studio'

@@ -13,7 +13,7 @@ class ShowRegisterPageTest extends TestCase
     /** @test **/
     function show_the_registration_page_when_the_register_cookie_exists()
     {
-        ConfirmationCode::create(['email' => 'jaggy@artisan.studio']);
+        ConfirmationCode::factory()->create(['email' => 'jaggy@artisan.studio']);
 
         $this->call('GET', '/register', [], [
             ConfirmationCode::EMAIL => encrypt('jaggy@artisan.studio'),

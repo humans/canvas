@@ -13,8 +13,8 @@ class ShowUserTest extends TestCase
     /** @test **/
     function show_the_user_profile()
     {
-        $admin = factory(User::class)->states('admin')->create();
-        $user  = factory(User::class)->create();
+        $admin = User::factory()->states('admin')->create();
+        $user  = User::factory()->create();
 
         $this
             ->actingAs($admin)
