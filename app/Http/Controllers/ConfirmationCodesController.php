@@ -20,7 +20,9 @@ class ConfirmationCodesController extends Controller
             'email.unique' => "The email is already a registered account."
         ]);
 
-        ConfirmationCode::firstOrCreate($email)->send();
+        ConfirmationCode::firstOrCreate($email)
+            ->resetIfExpired()
+            ->send();
 
         return redirect()->route('register');
     }

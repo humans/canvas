@@ -15,20 +15,13 @@ class RemoveExpiredConfirmationCodesTest extends TestCase
     /** @test **/
     function remove_all_the_expired_confirmation_codes()
     {
-        $lastWeek = now()->subDays(7);
-        $tomorrow = now()->addDays(1);
-        $now      = now();
+        ConfirmationCode::flushEventListeners();
 
-        Carbon::setTestNow($lastWeek);
-        ConfirmationCode::factory()->times(2)->create();
+        ConfirmationCode::factory()->states('expired')->times(2)->create();
 
-        Carbon::setTestNow($tomorrow);
         ConfirmationCode::factory()->create();
 
-        Carbon::setTestNow($now);
-        ConfirmationCode::factory()->create();
-
-        $this->assertCount(4, ConfirmationCode::get());
+        $this->assertCount(3, ConfirmationCode::get());
 
         dispatch(new RemoveExpiredConfirmationCodes);
         $this->assertCount(1, ConfirmationCode::get());

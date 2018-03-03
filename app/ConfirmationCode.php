@@ -9,6 +9,10 @@ class ConfirmationCode extends Model
 {
     const EMAIL = 'e';
 
+    protected $casts = [
+        'expires_at' => 'datetime',
+    ];
+
     public static function to()
     {
         return request()->cookie(static::EMAIL);
@@ -23,7 +27,7 @@ class ConfirmationCode extends Model
     {
         static::creating(function ($model) {
             $model->code       = sprintf("%06d", mt_rand(1, 999999));
-            $model->expires_at = now();
+            $model->expires_at = now()->addHours(1);
         });
 
         static::created(function ($model) {
@@ -31,6 +35,22 @@ class ConfirmationCode extends Model
                 cookie(static::EMAIL, $model->email, 60)
             );
         });
+    }
+
+    public function isExpired()
+    {
+        return $this->expires_at->lte(now());
+    }
+
+    public function resetIfExpired()
+    {
+        if (! $this->isExpired()) {
+            return $this;
+        }
+
+        return tap($this)->update([
+            'code' => sprintf("%06d", mt_rand(1, 999999)),
+        ]);
     }
 
     public function send()
