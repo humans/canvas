@@ -17,6 +17,7 @@ class RemoveExpiredConfirmationCodesTest extends TestCase
     {
         $lastWeek = now()->subDays(7);
         $tomorrow = now()->addDays(1);
+        $now      = now();
 
         Carbon::setTestNow($lastWeek);
         factory(ConfirmationCode::class, 2)->create();
@@ -24,7 +25,10 @@ class RemoveExpiredConfirmationCodesTest extends TestCase
         Carbon::setTestNow($tomorrow);
         factory(ConfirmationCode::class)->create();
 
-        $this->assertCount(3, ConfirmationCode::get());
+        Carbon::setTestNow($now);
+        factory(ConfirmationCode::class)->create();
+
+        $this->assertCount(4, ConfirmationCode::get());
 
         dispatch(new RemoveExpiredConfirmationCodes);
         $this->assertCount(1, ConfirmationCode::get());

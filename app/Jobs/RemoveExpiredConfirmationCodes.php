@@ -15,6 +15,6 @@ class RemoveExpiredConfirmationCodes implements ShouldQueue
 
     public function handle()
     {
-        ConfirmationCode::where('expires_at', '<', now())->delete();
+        ConfirmationCode::where('expires_at', '<=', now())->delete();
     }
 }

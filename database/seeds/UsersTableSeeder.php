@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-        factory(User::class)->states('admin')->create([
+        User::create()->states('admin')->create([
             'name'     => 'Jaggy Gauran',
             'username' => 'jaggy',
             'email'    => 'jaggy@artisan.studio',
