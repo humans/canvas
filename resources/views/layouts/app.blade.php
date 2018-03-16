@@ -24,7 +24,7 @@
         </script>
     </head>
 
-    <body class="[ font-sans leading-normal tracking-normal text-base text-black ]">
+    <body class="[ leading-normal tracking-normal text-base text-black ]">
         <main id="app">
             @include('layouts.header')
 

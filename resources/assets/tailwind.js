@@ -125,7 +125,7 @@ module.exports = {
 
     fonts: {
         'sans': [
-            'Roboto',
+            'Merriweather Sans',
             '-apple-system',
             'BlinkMacSystemFont',
             'Segoe UI',
@@ -138,7 +138,7 @@ module.exports = {
             'Helvetica Neue',
         ],
         'serif': [
-            'Roboto Slab',
+            'Merriweather',
             'Constantia',
             'Lucida Bright',
             'Lucidabright',
