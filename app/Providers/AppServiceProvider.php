@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Laravel\Horizon\Horizon;
 use Laravel\Dusk\DuskServiceProvider;
 use App\Http\Controllers\ActivateUserController;
 
@@ -15,6 +16,9 @@ class AppServiceProvider extends \Illuminate\Support\ServiceProvider
             $view->with('me', auth()->user());
         });
 
+        Horizon::auth(function ($request) {
+            return optional($request->user())->is_admin;
+        });
     }
 
     public function register()
