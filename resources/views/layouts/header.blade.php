@@ -4,7 +4,7 @@
             <a class="[ text-black no-underline hover:text-blue ]" href="{{ route('home') }}">{{ config('app.name') }}</a>
         </h1>
 
-        <nav class="right [ ml-auto text-sm ]">
+        <nav class="right [ ml-auto ]">
             @auth
                 <ul class="[ list-reset flex ]">
                     @impersonating

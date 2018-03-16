@@ -125,6 +125,7 @@ module.exports = {
 
     fonts: {
         'sans': [
+            'Roboto',
             '-apple-system',
             'BlinkMacSystemFont',
             'Segoe UI',
@@ -135,6 +136,19 @@ module.exports = {
             'Fira Sans',
             'Droid Sans',
             'Helvetica Neue',
+        ],
+        'serif': [
+            'Roboto Slab',
+            'Constantia',
+            'Lucida Bright',
+            'Lucidabright',
+            'Lucida Serif',
+            'Lucida',
+            'DejaVu Serif',
+            'Bitstream Vera Serif',
+            'Liberation Serif',
+            'Georgia',
+            'serif',
         ],
     },
 
@@ -159,13 +173,13 @@ module.exports = {
     */
 
     textSizes: {
-        'xs':   '12px',
-        'sm':   '16px',
-        'base': '24px',
-        'lg':   '34px',
-        'xl':   '48px',
-        '2xl':  '68px',
-        '3xl':  '96px',
+        'sm':   '12px',
+        'base': '16px',
+        'lg':   '24px',
+        'xl':   '34px',
+        '2xl':  '48px',
+        '3xl':  '68px',
+        '4xl':  '96px',
     },
 
 
