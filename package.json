@@ -17,7 +17,8 @@
     },
     "dependencies": {
         "axios": "^0.16.2",
-        "tailwindcss": "^0.4.0",
+        "tailwindcss": "^0.5.0",
+        "tailwindcss-modularscale": "^1.0.0",
         "vue": "^2.1.10"
     }
 }

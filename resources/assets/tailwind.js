@@ -173,13 +173,13 @@ module.exports = {
     */
 
     textSizes: {
-        'sm':   '12px',
-        'base': '16px',
-        'lg':   '24px',
-        'xl':   '34px',
-        '2xl':  '48px',
-        '3xl':  '68px',
-        '4xl':  '96px',
+        'sm':   ms(-1),
+        'base': ms(0),
+        'lg':   ms(1),
+        'xl':   ms(2),
+        '2xl':  ms(3),
+        '3xl':  ms(4),
+        '4xl':  ms(5),
     },
 
 
@@ -784,5 +784,26 @@ module.exports = {
         important: false,
         separator: ':',
     },
+
+    /*
+    |-----------------------------------------------------------------------------
+    | Plugins                                https://tailwindcss.com/docs/plugins
+    |-----------------------------------------------------------------------------
+    |
+    | Here is where you can register any plugins you'd like to use in your
+    | project. Tailwind's built-in `container` plugin is enabled by default to
+    | give you a Bootstrap-style responsive container component out of the box.
+    |
+    | Be sure to view the complete plugin documentation to learn more about how
+    | the plugin system works.
+    |
+    */
+
+    plugins: [
+        require('tailwindcss-modularscale')({
+            base:  16,
+            ratio: 1.414,
+        }),
+    ],
 
 }
