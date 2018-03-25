@@ -24,13 +24,13 @@
         </script>
     </head>
 
-    <body class="[ leading-normal tracking-normal text-base text-black ]">
+    <body class="[ leading-normal tracking-normal ms-base text-black ]">
         <main id="app">
             @include('layouts.header')
 
             <section class="content">
                 @impersonating
-                <section class="wrapper [ text-sm text-grey-darker ]">
+                <section class="wrapper [ ms-sm text-grey-darker ]">
                     <p>@lang('messages.impersonation_notice', ['name' => $me->name])</p>
                 </section>
                 @endImpersonating

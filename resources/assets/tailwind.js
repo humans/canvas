@@ -1,4 +1,4 @@
-const { ms, hsv } = require('./helpers.js')
+const { hsv } = require('./helpers.js')
 
 /*
 
@@ -173,13 +173,6 @@ module.exports = {
     */
 
     textSizes: {
-        'sm':   ms(-1),
-        'base': ms(0),
-        'lg':   ms(1),
-        'xl':   ms(2),
-        '2xl':  ms(3),
-        '3xl':  ms(4),
-        '4xl':  ms(5),
     },
 
 

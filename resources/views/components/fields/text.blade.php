@@ -1,5 +1,5 @@
 <div class="field {{ $name }} {{ $errors->has($name) ? 'has-error' : null }} [ {{ $utilities ?? null }} ]">
-    <label for="{{ $name }}" class="field-label [ block mb-4 text-sm font-semibold ]">
+    <label for="{{ $name }}" class="field-label [ block mb-4 ms-sm font-semibold ]">
         {{ $label }}
         @if($optional ?? false)
             <small class="field-optional">(optional)</small>

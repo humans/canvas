@@ -27,16 +27,17 @@
                             'utilities' => 'mt-16',
                         ])
 
-                        <p class="[ text-sm ]" v-if="error" v-text="error"></p>
+                        <p class="[ ms-sm ]" v-if="error" v-text="error"></p>
 
 
                         <button class="button [ mt-16 ]" type="submit" :disabled="processing">
                             Confirm Email
-                        <button>
+
+                        </button>
                     </form>
 
                     @local
-                    <p class="[ text-sm mt-16 text-grey-dark ]">
+                    <p class="[ ms-sm mt-16 text-grey-dark ]">
                         Navi here! Your confirmation code is: <strong>{{ App\ConfirmationCode::whisper() }}</strong>.
                     </p>
                     @endlocal

@@ -12,8 +12,7 @@
     "devDependencies": {
         "color": "^2.0.1",
         "cross-env": "^5.0.1",
-        "laravel-mix": "^1.0",
-        "modularscale-js": "^3.0.1"
+        "laravel-mix": "^1.0"
     },
     "dependencies": {
         "axios": "^0.16.2",

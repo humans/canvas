@@ -1,6 +1,6 @@
 <header class="header">
     <div class="wrapper [ flex items-center py-8 ]">
-        <h1 class="brand [ text-xl ]">
+        <h1 class="brand [ ms-xl ]">
             <a class="[ text-black no-underline hover:text-blue ]" href="{{ route('home') }}">{{ config('app.name') }}</a>
         </h1>
 
