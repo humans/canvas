@@ -4,8 +4,8 @@ namespace App;
 
 trait HasFactories
 {
-    public static function factory()
+    public static function factory(...$states)
     {
-        return factory(static::class);
+        return factory(static::class)->states($states);
     }
 }
