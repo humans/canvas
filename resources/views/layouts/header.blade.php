@@ -16,7 +16,7 @@
                     <li class="[ ml-16 ]"><a href="{{ route('logout') }}">Sign Out</a></li>
                 </ul>
             @else
-                <a class="button" href="{{ route('login') }}">Login</a>
+                <a class="button button-primary" href="{{ route('login') }}">Login</a>
             @endauth
         </nav>
     </div>

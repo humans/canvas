@@ -1,8 +1,51 @@
 .button {
-    @apply .block .bg-blue .rounded-sm .py-10 .px-32;
-    @apply .no-underline .uppercase .text-white .ms-sm .font-semibold .tracking-wide;
+    --button-border:     config('colors.grey-light');
+    --button-bg:         config('colors.grey-light');
+    --button-text:       config('colors.black');
+
+    @apply no-underline;
+    @apply border rounded px-4 py-2;
+
+    border-color:     var(--button-border);
+    background-color: var(--button-bg);
+    color:            var(--button-text);
 }
 
-input {
-    @apply .rounded .border;
+.button:hover {
+    --button-border: config('colors.grey');
+    --button-bg:     config('colors.grey');
+    --button-text:   config('colors.white');
+}
+
+.button-primary {
+    --button-bg:     config('colors.blue');
+    --button-border: config('colors.blue');
+    --button-text:   config('colors.white');
+}
+
+.button-primary:hover {
+    --button-bg:     config('colors.blue');
+    --button-border: config('colors.blue');
+    --button-text:   config('colors.white');
+}
+
+.button-grey {
+    --button-bg:     config('colors.grey-dark');
+    --button-border: config('colors.grey-dark');
+    --button-text:   config('colors.white');
+}
+
+.button-grey:hover {
+    --button-bg:     config('colors.grey-dark');
+    --button-border: config('colors.grey-dark');
+}
+
+.button-outline {
+    --button-text: var(--button-border);
+    --button-bg:   config('colors.transparent');
+}
+
+.button-outline:hover {
+    --button-bg:   var(--button-border);
+    --button-text: config('colors.white');
 }
