@@ -17,6 +17,12 @@ class BladeServiceProvider extends \Illuminate\Support\ServiceProvider
         Blade::if('local', function () {
             return app()->environment('local');
         });
+
+        Blade::directive('partial', function ($expression) {
+            $expression = strrev(str_replace('.', '_.', strrev($expression)));
+
+            return "<?php echo \$__env->make({$expression}, array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>";
+        });
     }
 
     public function register()

@@ -29,14 +29,14 @@
             @include('layouts.header')
 
             <section class="content">
-                @impersonating
-                <section class="wrapper [ ms-sm text-grey-darker ]">
-                    <p>@lang('messages.impersonation_notice', ['name' => $me->name])</p>
-                </section>
-                @endImpersonating
-
                 @yield('content')
             </section>
+
+            @impersonating
+            <section class="wrapper [ ms-sm text-grey-darker ]">
+                <p>@lang('messages.impersonation_notice', ['name' => $me->name])</p>
+            </section>
+            @endImpersonating
         </main>
 
         <script src="{{ mix('js/manifest.js') }}"></script>

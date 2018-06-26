@@ -57,7 +57,7 @@ var colors = {
     'grey-lighter':  '#f3f7f9',
     'grey-lightest': '#fafcfc',
     'white':         '#ffffff',
-    'blue':          '#3490dc',
+    'blue':          '#48aae6',
 }
 
 module.exports = {
@@ -179,6 +179,7 @@ module.exports = {
     */
 
     textSizes: {
+        '14': '14px',
     },
 
 
@@ -819,7 +820,7 @@ module.exports = {
     plugins: [
         require('tailwindcss-modularscale')({
             base:  16,
-            ratio: 1.414,
+            ratio: 1.333,
         }),
     ],
 

@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="wrapper">
-        <h1>Landing</h1>
+        <h1>Welcome to Canvas!</h1>
     </div>
 @endsection
-

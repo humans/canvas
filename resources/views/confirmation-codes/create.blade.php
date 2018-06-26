@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="wrapper [ max-w-sm mt-32 ]">
-        <h1>Join {{ config('app.name') }}</h1>
+    <div class="wrapper [ max-w-sm py-8 ]">
+        <h1>Join {{ config('app.name') }}.</h1>
 
-        <p>Please confirm your email address first.</p>
+        <p class="[ text-grey-darker ]">@lang('messages.please_confirm_your_email_address')</p>
 
-        <form action="{{ route('confirmation-codes.store') }}" method="POST">
+        <form class="[ flex flex-col ]" action="{{ route('confirmation-codes.store') }}" method="POST">
             @csrf
 
             @textfield([
                 'label' => 'Email Address',
                 'name'  => 'email',
-                'utilities' => 'mt-8',
+                'class' => 'mt-4',
             ])
 
-            <button class="button [ mt-16 ]">Confirm</button>
+            <button class="button button-primary [ mt-4 ml-auto ]">Confirm</button>
         </form>
     </div>
 @endsection
