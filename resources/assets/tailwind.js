@@ -125,7 +125,6 @@ module.exports = {
 
     fonts: {
         'sans': [
-            'Merriweather Sans',
             '-apple-system',
             'BlinkMacSystemFont',
             'Segoe UI',
@@ -138,7 +137,6 @@ module.exports = {
             'Helvetica Neue',
         ],
         'serif': [
-            'Merriweather',
             'Constantia',
             'Lucida Bright',
             'Lucidabright',
@@ -149,6 +147,14 @@ module.exports = {
             'Liberation Serif',
             'Georgia',
             'serif',
+        ],
+        'mono': [
+            'Menlo',
+            'Monaco',
+            'Consolas',
+            'Liberation Mono',
+            'Courier New',
+            'monospace',
         ],
     },
 
