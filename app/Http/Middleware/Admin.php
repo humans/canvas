@@ -8,7 +8,7 @@ class Admin
 {
     public function handle($request, Closure $next)
     {
-        if (auth()->guest() || ! auth()->user()->is_admin) {
+        if (auth()->guest() || ! auth()->user()->isAdmin()) {
             abort(404);
         }
 

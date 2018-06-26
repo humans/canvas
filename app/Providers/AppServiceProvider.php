@@ -17,7 +17,7 @@ class AppServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         Horizon::auth(function ($request) {
-            return optional($request->user())->is_admin;
+            return optional($request->user())->isAdmin();
         });
     }
 

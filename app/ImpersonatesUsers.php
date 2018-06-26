@@ -6,12 +6,12 @@ trait ImpersonatesUsers
 {
     public function canImpersonate()
     {
-        return $this->is_admin;
+        return $this->isAdmin();
     }
 
     public function canBeImpersonated()
     {
-        return ! $this->is_admin;
+        return ! $this->isAdmin();
     }
 
     public function isImpersonated()
