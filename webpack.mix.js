@@ -14,6 +14,7 @@ let { mix }  = require('laravel-mix')
 
 mix.sass('resources/assets/sass/app.scss', 'public/css')
    .options({
+       processCssUrls: false,
        postCss: [
            tailwind('./resources/assets/tailwind.js')
        ]
@@ -21,6 +22,3 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
    .js('resources/assets/js/register.js', 'public/js')
    .js('resources/assets/js/app.js', 'public/js')
    .extract(['vue', 'axios'])
-
-   // I'm not sure why notifications are crashing the daemon.
-   .disableNotifications()
