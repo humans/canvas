@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateConfirmationCodesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('confirmation_codes', function (Blueprint $table) {
@@ -24,11 +19,6 @@ class CreateConfirmationCodesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('confirmation_codes');
