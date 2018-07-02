@@ -1,4 +1,3 @@
-let tailwind = require('tailwindcss')
 let { mix }  = require('laravel-mix')
 
 /*
@@ -12,13 +11,10 @@ let { mix }  = require('laravel-mix')
  |
  */
 
-mix.sass('resources/assets/sass/app.scss', 'public/css')
-   .options({
-       processCssUrls: false,
-       postCss: [
-           tailwind('./resources/assets/tailwind.js')
-       ]
-    })
+mix.postCss('resources/assets/css/app.css', 'public/css', [
+        require('postcss-import'),
+        require('tailwindcss')('./resources/assets/tailwind.js'),
+   ])
    .js('resources/assets/js/register.js', 'public/js')
    .js('resources/assets/js/app.js', 'public/js')
    .extract(['vue', 'axios'])

@@ -9,9 +9,12 @@
 | You can see the styles here:
 | https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
 |
+| If using `postcss-import`, use this import instead:
+|
+| @import "tailwindcss/preflight";
 */
 
-@tailwind preflight;
+@import "tailwindcss/preflight";
 
 /*
 |--------------------------------------------------------------------------
@@ -28,18 +31,6 @@
 
 /*
 |--------------------------------------------------------------------------
-| Tools
-|--------------------------------------------------------------------------
-|
-| Here is where all the fucntions and mixins would fall into.
-| Feel free to break apart your files when need be.
-|
-*/
-
-@import 'tools/mixins';
-
-/*
-|--------------------------------------------------------------------------
 | Objects
 |--------------------------------------------------------------------------
 |
@@ -47,7 +38,7 @@
 |
 */
 
-@import 'objects/form';
+@import 'objects/button';
 @import 'objects/modal';
 
 /*
@@ -61,8 +52,6 @@
 
 @import 'layouts/header';
 @import 'layouts/footer';
-@import 'layouts/section';
-@import 'layouts/pages';
 
 /*
 |--------------------------------------------------------------------------
@@ -73,7 +62,7 @@
 |
 */
 
-// @import 'components/field';
+/** @import 'components/field'; **/
 
 /*
 |--------------------------------------------------------------------------
@@ -83,23 +72,29 @@
 | This injects all of Tailwind's utility classes, generated based on your
 | config file.
 |
+| If using `postcss-import`, use this import instead:
+|
+| @import "tailwindcss/utilities";
 */
 
-@tailwind utilities;
+@import "tailwindcss/utilities";
 
-/*
+/**
 |--------------------------------------------------------------------------
 | Utilities
 |--------------------------------------------------------------------------
+| Here you would add any custom utilities you need that don't come out of the
+| box with Tailwind.
 |
-| Utilities come last so they have the freedom to override the previous
-| applied styles, as long as the specificity for the element being tweaked
-| isn't extremely deep.
+| Example :
 |
-| Yeah, I know it's annoying that it's away from all it's siblings from the
-| base/ directory but, I'd rather have it in the same place than give this
-| file it's own lonesome corner.
+| .bg-pattern-graph-paper { ... }
+| .skew-45 { ... }
 |
+| Or if using a preprocessor or `postcss-import`:
+|
+| @import "utilities/background-patterns";
+| @import "utilities/skew-transforms";
 */
 
 @import 'base/utilities';
