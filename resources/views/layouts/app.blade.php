@@ -30,7 +30,7 @@
 
     <body class="[ leading-normal tracking-normal ms-base text-black ]">
         <main id="app">
-            @include('layouts.header')
+            @partial('layouts.header')
 
             <section class="content">
                 @yield('content')

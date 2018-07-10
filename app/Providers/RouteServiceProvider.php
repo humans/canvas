@@ -10,8 +10,6 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
 
     public function boot()
     {
-        //
-
         parent::boot();
     }
 
@@ -22,8 +20,6 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
         $this->mapWebRoutes();
 
         $this->mapAdminRoutes();
-
-        $this->mapMailRoutes();
     }
 
     protected function mapWebRoutes()
@@ -49,17 +45,5 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
             ->namespace($this->namespace . '\Admin')
             ->as('admin.')
             ->group(base_path('routes/admin.php'));
-    }
-
-    protected function mapMailRoutes()
-    {
-        if (! $this->app->environment('local')) {
-            return;
-        }
-
-        Route::prefix('mail')
-            ->middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/mail.php'));
     }
 }
