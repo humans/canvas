@@ -11,10 +11,20 @@ let { mix }  = require('laravel-mix')
  |
  */
 
-mix.postCss('resources/assets/css/app.css', 'public/css', [
+mix.webpackConfig({
+        resolve: {
+            alias: {
+                '@components': path.resolve(__dirname, 'resources/assets/js/components'),
+            },
+        },
+    })
+    .postCss('resources/assets/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss')('./resources/assets/tailwind.js'),
-   ])
-   .js('resources/assets/js/register.js', 'public/js')
-   .js('resources/assets/js/app.js', 'public/js')
-   .extract(['vue', 'axios'])
+    ])
+    .js('resources/assets/js/register.js', 'public/js')
+    .js('resources/assets/js/app.js', 'public/js')
+
+if (['development', 'production'].includes(process.env.NODE_ENV)) {
+    mix.extract(['vue', 'axios']).version()
+}
