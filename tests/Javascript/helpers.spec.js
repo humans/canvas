@@ -3,7 +3,7 @@ import { tap } from '../../resources/assets/js/helpers.js'
 
 describe('tap', () => {
 
-    it.only ('returns the original object after calling a void function', () => {
+    it('returns the original object after calling a void function', () => {
         const object = {
             originalValue: 5,
             doSomething:   () => {}

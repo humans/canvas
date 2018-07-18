@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-    <register-form email="{{ $email }}" errors="{{ $errors }}" inline-template>
+    <register-form email="{{ $email }}" errors="{{ $errors }}">
         <section class="registration">
             <div class="wrapper [ max-w-sm mt-8 ]">
                 @partial('register.email-confirmation')
