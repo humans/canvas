@@ -9,11 +9,31 @@ describe('ConfirmEmailStep', () => {
     beforeEach(() => {
         moxios.install()
 
-        wrapper = mount(ConfirmEmailStep)
+        wrapper = mount(ConfirmEmailStep, {
+            propsData: { email: 'jaggy@artisan.studio' },
+        })
     })
 
     afterEach(() => {
         moxios.uninstall()
+    })
+
+    it('disables the button when the confirmation code is empty', () => {
+        wrapper.setData({ code: null })
+
+        expect(
+            wrapper.find('button').attributes().disabled
+        ).toBeTruthy()
+    })
+
+    it('does not submit the form ', () => {
+        mockPassingValidation()
+
+        wrapper.setData({ code: null })
+
+        wrapper.find('form').trigger('submit')
+
+        expect(wrapper.vm.isProcessing).toBe(false)
     })
 
     it('emits a success event when the validation passes', (done) => {
