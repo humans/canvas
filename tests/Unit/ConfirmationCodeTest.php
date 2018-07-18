@@ -28,4 +28,19 @@ class ConfirmationCodeTest extends TestCase
         Carbon::setTestNow($now);
         $this->assertTrue($code->isExpired());
     }
+
+    /** @test **/
+    function reset_the_expiry_wheb_resetting_the_code()
+    {
+        ConfirmationCode::flushEventListeners();
+
+        $code = ConfirmationCode::factory('expired')->create();
+        $expiry = $code->expires_at;
+
+        $code->resetIfExpired();
+
+        $this->assertTrue(
+            $code->fresh()->expires_at->ne($expiry)
+        );
+    }
 }

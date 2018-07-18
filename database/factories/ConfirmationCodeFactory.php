@@ -10,7 +10,6 @@ $factory->define(App\ConfirmationCode::class, function (Faker $faker) {
     ];
 });
 
-
 $factory->state(App\ConfirmationCode::class, 'expired', function (Faker $faker) {
     return ['expires_at' => now()->subDays(7)];
 });

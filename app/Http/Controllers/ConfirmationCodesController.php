@@ -22,6 +22,7 @@ class ConfirmationCodesController extends Controller
 
         ConfirmationCode::firstOrCreate($email)
             ->resetIfExpired()
+            ->refreshCookie()
             ->send();
 
         return redirect()->route('register');

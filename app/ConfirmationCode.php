@@ -29,17 +29,20 @@ class ConfirmationCode extends Model
             $model->code       = sprintf("%06d", mt_rand(1, 999999));
             $model->expires_at = now()->addHours(1);
         });
-
-        static::created(function ($model) {
-            cookie()->queue(
-                cookie(static::EMAIL, $model->email, 60)
-            );
-        });
     }
 
     public function isExpired()
     {
-        return $this->expires_at->lte(now());
+        return now()->gt($this->expires_at);
+    }
+
+    public function refreshCookie()
+    {
+        cookie()->queue(
+            cookie(static::EMAIL, $this->email, $minutes = 60)
+        );
+
+        return $this;
     }
 
     public function resetIfExpired()
@@ -49,7 +52,8 @@ class ConfirmationCode extends Model
         }
 
         return tap($this)->update([
-            'code' => sprintf("%06d", mt_rand(1, 999999)),
+            'code'       => sprintf("%06d", mt_rand(1, 999999)),
+            'expires_at' => now()->addHours(1),
         ]);
     }
 
