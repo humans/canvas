@@ -5,13 +5,6 @@
 @endpush
 
 @section('content')
-    <register-form email="{{ $email }}" errors="{{ $errors }}">
-        <section class="registration">
-            <div class="wrapper [ max-w-sm mt-8 ]">
-                @partial('register.email-confirmation')
-
-                @partial('register.user-profile')
-            </div>
-        </section>
-    </register-form>
+    <register-form-wizard email="{{ $email }}" :errors="{{ $errors }}">
+    </register-form-wizard>
 @endsection

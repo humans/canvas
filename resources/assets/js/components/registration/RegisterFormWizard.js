@@ -4,7 +4,7 @@ export default {
     render(h) {
         return <section class="register-form-wizard">
             <div class="wrapper [ max-w-sm mt-8 ]">
-                <ConfirmEmailStep />
+                <ConfirmEmailStep email={ this.email } onSuccess={ this.next } />
             </div>
         </section>
     },
@@ -32,12 +32,9 @@ export default {
         },
     },
 
-    data () {
-        return {
-            code:       null,
-            processing: false,
-            confirmed:  false,
-            error:      null,
-        }
+    methods: {
+        next() {
+            console.error('test')
+        },
     },
 }

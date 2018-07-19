@@ -60,9 +60,9 @@ describe('ConfirmEmailStep', () => {
         wrapper.find('form').trigger('submit')
 
         moxios.wait(() => {
-            expect(wrapper.vm.errorMessage).toBe('The confirmation code was incorrect.')
-
             expect(wrapper.find('button').attributes().disabled).toBeFalsy()
+
+            expect(wrapper.html()).toContain('The confirmation code was incorrect.')
 
             done()
         })
