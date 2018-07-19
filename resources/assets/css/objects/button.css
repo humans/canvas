@@ -11,6 +11,10 @@
     color:            var(--button-text);
 }
 
+.button[disabled] {
+    @apply opacity-50;
+}
+
 .button:hover {
     --button-border: config('colors.grey');
     --button-bg:     config('colors.grey');

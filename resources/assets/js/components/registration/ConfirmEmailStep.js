@@ -1,19 +1,20 @@
 import axios from 'axios'
+import TextField from '../TextField';
 
 export default {
     name: 'ConfirmEmailStep',
 
     render(h) {
         return <section class="step confirm-email">
-            <form action="/api/confirm-email" class="flex flex-col" ref="form" onSubmit={ this.confirm }>
-                <div class="field">
-                    <label for="code" class="field-label [ block mb-1 font-semibold ]"></label>
+            <h1 class="[ mb-2 ]">Check your email</h1>
 
-                    <input id="code" class="field-input [ w-full py-2 px-1 border-rounded ]" type="text"
-                        onInput={ (event) => this.code = event.target.value } />
+            <p>We’ve sent a six-digit confirmation code to <strong>{ this.email }</strong>. It will expire shortly, so enter your code soon!</p>
 
-                    { this.errorMessage(h) }
-                </div>
+            <form action="/api/confirm-email" method="POST" class="[ flex flex-col mt-4 ]" ref="form" onSubmit={ this.confirm }>
+                <TextField
+                    label="Your confirmation code"
+                    message={ this.errorMessage }
+                    onInput={ event => this.code = event.target.value } />
 
                 <button class="button button-primary [ mt-6 ml-auto ]" type="submit" disabled={ ! this.isValid }>
                     Confirm Email
@@ -33,20 +34,12 @@ export default {
     data() {
         return {
             code: null,
-            error: null,
+            errorMessage: null,
             isProcessing: false,
         }
     },
 
     methods: {
-        errorMessage(h) {
-            if (! this.error) {
-                return null
-            }
-
-            return <p class="field-message">{ this.error }</p>
-        },
-
         confirm(event) {
             event.preventDefault()
 
@@ -59,7 +52,7 @@ export default {
             axios.post(this.$refs.form.action, { code: this.code, email: this.email })
                 .then(() => this.$emit('success'))
                 .catch(({ response }) => {
-                    this.error = response.data.message
+                    this.errorMessage = response.data.message
                     this.isProcessing = false
                 })
         },
