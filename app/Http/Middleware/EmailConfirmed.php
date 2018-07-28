@@ -13,7 +13,7 @@ class EmailConfirmed
             return redirect()->route('confirmation-codes.create');
         }
 
-        if(! $code = ConfirmationCode::where('email', $email)->first()) {
+        if (! $code = ConfirmationCode::where('email', $email)->first()) {
             return redirect()->route('confirmation-codes.create');
         }
 

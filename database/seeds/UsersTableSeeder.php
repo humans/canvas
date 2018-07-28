@@ -20,6 +20,5 @@ class UsersTableSeeder extends Seeder
             'email'    => 'jaggy@artisan.studio',
             'password' => bcrypt('password'),
         ]);
-
     }
 }
