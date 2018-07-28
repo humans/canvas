@@ -94,4 +94,3 @@ class LoginTest extends TestCase
         ]);
     }
 }
-
