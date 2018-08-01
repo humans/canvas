@@ -10,7 +10,7 @@
             @endif
 
             <form class="flex flex-col" method="POST" action="{{ route('login.store') }}">
-                {{ csrf_field() }}
+                @csrf
 
                 @textfield([
                     'label' => 'Email address or Username',
