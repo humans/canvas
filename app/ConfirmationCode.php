@@ -20,6 +20,10 @@ class ConfirmationCode extends Model
 
     public static function whisper()
     {
+        if (! app()->environment('local')) {
+            return;
+        }
+
         return static::where(['email' => static::to()])->first()->code;
     }
 

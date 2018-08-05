@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @push('scripts')
+<script>
+    window.App.whisper = "{{ $whisper }}"
+</script>
+
 <script src="{{ mix('js/register.js') }}"></script>
 @endpush
 

@@ -68,6 +68,12 @@ describe('ConfirmEmailStep', () => {
         })
     })
 
+    it('shows the confirmation code when a whisper is heard', () => {
+        wrapper.setData({ whisper: '123456' })
+
+        expect(wrapper.html()).toContain('123456')
+    })
+
     function mockPassingValidation() {
         moxios.stubRequest('/api/confirm-email', {
             response: { 'message': 'Your email address has been confirmed.' },

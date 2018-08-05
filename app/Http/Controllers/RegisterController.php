@@ -17,7 +17,8 @@ class RegisterController extends Controller
     public function create()
     {
         return view('register.create', [
-            'email' => ConfirmationCode::to()
+            'email' => ConfirmationCode::to(),
+            'whisper' => ConfirmationCode::whisper(),
         ]);
     }
 

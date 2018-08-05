@@ -4,7 +4,7 @@ export default {
     render(h) {
         return <section class="register-form-wizard">
             <div class="wrapper [ max-w-sm mt-8 ]">
-                <ConfirmEmailStep email={ this.email } onSuccess={ this.next } />
+                <ConfirmEmailStep email={this.email} onSuccess={this.next} />
             </div>
         </section>
     },
@@ -24,7 +24,7 @@ export default {
         /**
          * The errors are for the user profile form so if there are errors,
          * we can immediately jump straight to that step.
-         * 
+         *
          * @return Boolean
          */
         showProfileForm() {
