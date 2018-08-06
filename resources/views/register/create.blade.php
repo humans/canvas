@@ -9,6 +9,8 @@
 @endpush
 
 @section('content')
-    <register-form-wizard email="{{ $email }}" :errors="{{ $errors }}">
+    <register-form-wizard email="{{ $email }}" 
+        :errors="{{ $errors }}" 
+        :old="{{ json_encode(old()) }}">
     </register-form-wizard>
 @endsection

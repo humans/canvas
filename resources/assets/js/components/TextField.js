@@ -11,7 +11,7 @@ export default {
                 <label for="code" class="label">{this.label}</label>
 
                 <input class="input" type="text"
-                    id={this.input} name={this.input}
+                    id={this.input} name={this.input} value={this.value}
                     placeholder={this.placeholder}
                     onInput={(event) => this.$emit('input', event)} />
 

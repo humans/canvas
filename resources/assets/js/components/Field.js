@@ -4,5 +4,6 @@ export default {
         input: String,
         message: String,
         placeholder: String,
+        value: String,
     },
 }

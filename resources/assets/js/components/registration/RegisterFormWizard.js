@@ -1,7 +1,6 @@
 import ConfirmEmailStep from './ConfirmEmailStep.js'
 import UserProfileStep from './UserProfileStep.js'
-import { renderIf } from '../../helpers.js'
-
+import { renderIf } from '../../helpers.js' 
 export default {
     name: 'RegisterFormWizard',
 
@@ -16,19 +15,14 @@ export default {
 
                     {renderIf(
                         this.showProfileForm,
-                        <UserProfileStep />
+                        <UserProfileStep errors={this.errors} old={this.old} />
                     )}
                 </div>
             </section>
         )
     },
 
-    props: {
-        email: String,
-        errors: {
-            default: () => [],
-        },
-    },
+    props: ['email', 'old', 'errors'],
 
     computed: {
         hasErrors() {
