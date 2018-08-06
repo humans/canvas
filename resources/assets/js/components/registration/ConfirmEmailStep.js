@@ -15,6 +15,7 @@ export default {
                 <form action="/api/confirm-email" method="POST" class="[ flex flex-col mt-4 ]" ref="form" onSubmit={this.confirm}>
                     <TextField
                         label="Your confirmation code"
+                        input="code"
                         message={this.errorMessage}
                         onInput={(event) => this.code = event.target.value} />
 

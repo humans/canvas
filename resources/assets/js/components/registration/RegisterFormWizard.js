@@ -1,12 +1,26 @@
 import ConfirmEmailStep from './ConfirmEmailStep.js'
+import UserProfileStep from './UserProfileStep.js'
+import { renderIf } from '../../helpers.js'
 
 export default {
+    name: 'RegisterFormWizard',
+
     render(h) {
-        return <section class="register-form-wizard">
-            <div class="wrapper [ max-w-sm mt-8 ]">
-                <ConfirmEmailStep email={this.email} onSuccess={this.next} />
-            </div>
-        </section>
+        return (
+            <section class="register-form-wizard">
+                <div class="wrapper [ max-w-sm mt-8 ]">
+                    {renderIf(
+                        ! this.showProfileForm,
+                        <ConfirmEmailStep email={this.email} onSuccess={this.next} />
+                    )}
+
+                    {renderIf(
+                        this.showProfileForm,
+                        <UserProfileStep />
+                    )}
+                </div>
+            </section>
+        )
     },
 
     props: {
@@ -18,7 +32,7 @@ export default {
 
     computed: {
         hasErrors() {
-            return !! Object.keys(JSON.parse(this.errors)).length
+            return !! Object.keys(this.errors).length
         },
 
         /**
@@ -32,9 +46,13 @@ export default {
         },
     },
 
+    data() {
+        return { confirmed: false }
+    },
+
     methods: {
         next() {
-            console.error('test')
+            this.confirmed = true
         },
     },
 }
