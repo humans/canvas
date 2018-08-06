@@ -48,18 +48,6 @@ export default {
     props: ['errors', 'old'],
 
     methods: {
-        notice(key) {
-            console.error({
-                message: this.error(key),
-                value: this.value(key),
-            })
-
-            return {
-                message: this.error(key),
-                value: this.value(key),
-            }
-        },
-
         error(key) {
             if (! this.errors.hasOwnProperty(key)) {
                 return null
