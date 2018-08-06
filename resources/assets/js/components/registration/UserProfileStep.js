@@ -6,8 +6,9 @@ export default {
 
     render(h) {
         return (
-            <section class="step user-profile">
-                <h1>Complete your profile</h1>
+            <section class="wizard-step user-profile">
+                <h1 class="title">Complete your profile</h1>
+
                 <p class="text-grey-darker">Just one more step before you're in!</p>
 
                 <form class="mt-4 flex flex-col" method="POST" action="/register">
@@ -27,10 +28,10 @@ export default {
                         value={this.value('username')} />
 
                     <div class="password-fields flex flex-col md:flex-row md:justify-between md:mt-4">
-                        <PasswordField 
-                            class="mt-4 md:mt-0 md:mr-2 w-full" 
-                            label="Password" 
-                            input="password" 
+                        <PasswordField
+                            class="mt-4 md:mt-0 md:mr-2 w-full"
+                            label="Password"
+                            input="password"
                             message={this.error('password')} />
 
                         <PasswordField 
@@ -39,7 +40,7 @@ export default {
                             input="password_confirmation" />
                     </div>
 
-                    <button type="submit" class="button button-primary mt-4 ml-auto">Register</button>
+                    <button type="submit" class="button -primary mt-4 ml-auto">Register</button>
                 </form>                
             </section>
         )

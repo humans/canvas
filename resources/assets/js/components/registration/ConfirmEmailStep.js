@@ -7,8 +7,8 @@ export default {
 
     render(h) {
         return (
-            <section class="step confirm-email">
-                <h1 class="[ mb-2 ]">Check your email</h1>
+            <section class="wizard-step confirm-email">
+                <h1 class="title">Check your email</h1>
 
                 <p>We’ve sent a six-digit confirmation code to <strong>{this.email}</strong>. It will expire shortly, so enter your code soon!</p>
 
@@ -24,7 +24,7 @@ export default {
                         <p class="ms-sm mt-1 text-grey-dark">Hey, Navi here. Your confirmation code is <strong>{this.whisper}</strong>!</p>
                     )}
 
-                    <button class="button button-primary [ mt-6 ml-auto ]" type="submit" disabled={this.isNotValid}>
+                    <button class="button -primary [ mt-6 ml-auto ]" type="submit" disabled={this.isNotValid}>
                         Confirm Email
                     </button>
                 </form>

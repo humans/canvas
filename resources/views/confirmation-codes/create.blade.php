@@ -15,7 +15,7 @@
                 'class' => 'mt-4',
             ])
 
-            <button class="button button-primary [ mt-4 ml-auto ]">Confirm</button>
+            <button class="button -primary [ mt-4 ml-auto ]">Confirm</button>
         </form>
     </div>
 @endsection

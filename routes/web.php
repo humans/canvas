@@ -1,9 +1,5 @@
 <?php
 
-if (app()->environment('local')) {
-    Route::view('doodles', 'doodles');
-}
-
 Route::get('/', 'HomeController')->name('home');
 
 /*

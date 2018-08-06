@@ -1,6 +1,11 @@
-html, body {
-}
-
 h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-semibold;
+}
+
+.link {
+    @apply no-underline uppercase ms-sm tracking-wide font-semibold text-black;
+}
+
+.link:hover {
+    @apply text-blue;
 }

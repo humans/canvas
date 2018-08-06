@@ -1,0 +1,7 @@
+.register-form-wizard > .wrapper {
+    @apply max-w-sm;
+}
+
+.wizard-step > .title {
+    @apply mb-1;
+}

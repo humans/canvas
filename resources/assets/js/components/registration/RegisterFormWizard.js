@@ -7,7 +7,7 @@ export default {
     render(h) {
         return (
             <section class="register-form-wizard">
-                <div class="wrapper [ max-w-sm mt-8 ]">
+                <div class="wrapper mt-8">
                     {renderIf(
                         ! this.showProfileForm,
                         <ConfirmEmailStep email={this.email} onSuccess={this.next} />

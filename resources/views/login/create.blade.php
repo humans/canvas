@@ -32,7 +32,7 @@
                     <a class="[ ml-auto no-underline ]" href="{{ route('confirmation-codes.create') }}">Join Us</a>
                 </div>
 
-                <button class="button button-primary [ mt-6 ml-auto ]" type="submit">Login</button>
+                <button class="button -primary [ mt-6 ml-auto ]" type="submit">Login</button>
             </form>
         </div>
     </section>

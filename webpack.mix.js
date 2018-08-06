@@ -20,6 +20,7 @@ mix.webpackConfig({
     })
     .postCss('resources/assets/css/app.css', 'public/css', [
         require('postcss-import'),
+        require('postcss-nested'),
         require('tailwindcss')('./resources/assets/tailwind.js'),
     ])
     .js('resources/assets/js/register.js', 'public/js')

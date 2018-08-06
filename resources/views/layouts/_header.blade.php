@@ -1,12 +1,12 @@
-<header class="header">
-    <div class="wrapper [ flex items-center py-8 ]">
-        <h1 class="brand [ ms-xl ]">
-            <a class="[ text-black no-underline hover:text-blue ]" href="{{ route('home') }}">{{ config('app.name') }}</a>
+<header class="app-header">
+    <div class="wrapper">
+        <h1 class="brand">
+            <a href="{{ route('home') }}">{{ config('app.name') }}</a>
         </h1>
 
-        <nav class="right [ ml-auto ]">
+        <nav class="actions ml-auto">
             @auth
-                <ul class="[ list-reset flex ]">
+                <ul class="list-reset flex">
                     @impersonating
                         <li><a href="{{ route('impersonate.leave') }}">End Impersonation</a></li>
                     @else
@@ -15,10 +15,10 @@
                         @endCanImpersonate
                     @endImpersonating
 
-                    <li class="[ ml-4 ]"><a href="{{ route('logout') }}">Sign Out</a></li>
+                    <li class="ml-4"><a href="{{ route('logout') }}">Sign Out</a></li>
                 </ul>
             @else
-                <a class="button button-primary" href="{{ route('login') }}">Login</a>
+                <a class="link" href="{{ route('login') }}">Login</a>
             @endauth
         </nav>
     </div>

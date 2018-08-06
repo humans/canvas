@@ -28,7 +28,7 @@
         </script>
     </head>
 
-    <body class="[ leading-normal tracking-normal ms-base text-black ]">
+    <body>
         <main id="app">
             @partial('layouts.header')
 
