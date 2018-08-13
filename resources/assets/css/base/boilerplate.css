@@ -3,10 +3,9 @@
 }
 
 html {
-    @apply text-black font-sans ms-base;
-    @apply tracking-normal leading-normal;
+    @apply .text-black .font-sans .ms-base .tracking-normal .leading-normal;
 }
 
 .wrapper {
-    @apply w-full max-w-xl mx-auto px-4;
+    @apply .w-full .max-w-xl .mx-auto .px-4;
 }

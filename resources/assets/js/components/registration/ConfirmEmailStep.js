@@ -1,13 +1,13 @@
 import axios from 'axios'
 import TextField from '../TextField.js'
-import { renderIf } from '../../helpers.js'
+import { when } from '../../helpers.js'
 
 export default {
     name: 'ConfirmEmailStep',
 
     render(h) {
         return (
-            <section class="wizard-step confirm-email">
+            <section class="wizard-step">
                 <h1 class="title">Check your email</h1>
 
                 <p>We’ve sent a six-digit confirmation code to <strong>{this.email}</strong>. It will expire shortly, so enter your code soon!</p>
@@ -19,7 +19,7 @@ export default {
                         message={this.errorMessage}
                         onInput={(event) => this.code = event.target.value} />
 
-                    {renderIf(
+                    {when(
                         this.whisper,
                         <p class="ms-sm mt-1 text-grey-dark">Hey, Navi here. Your confirmation code is <strong>{this.whisper}</strong>!</p>
                     )}

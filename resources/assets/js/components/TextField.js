@@ -1,5 +1,5 @@
 import Field from './Field.js'
-import { renderIf } from '../helpers.js'
+import { when } from '../helpers.js'
 
 export default {
     name: "TextField",
@@ -15,8 +15,7 @@ export default {
                     placeholder={this.placeholder}
                     onInput={(event) => this.$emit('input', event)} />
 
-                {renderIf(
-                    this.message,
+                {when(this.message,
                     <p class="message">{this.message}</p>
                 )}
             </div>

@@ -14,17 +14,17 @@ export default {
                 <form class="mt-4 flex flex-col" method="POST" action="/register">
                     <input type="hidden" name="_token" value={window.App.csrfToken} />
 
-                    <TextField 
-                        label="Name" 
+                    <TextField
+                        label="Name"
                         input="name"
-                        message={this.error('name')} 
+                        message={this.error('name')}
                         value={this.value('name')} />
 
-                    <TextField 
-                        class="mt-4" 
-                        label="Username" 
-                        input="username" 
-                        message={this.error('username')} 
+                    <TextField
+                        class="mt-4"
+                        label="Username"
+                        input="username"
+                        message={this.error('username')}
                         value={this.value('username')} />
 
                     <div class="password-fields flex flex-col md:flex-row md:justify-between md:mt-4">
@@ -34,14 +34,14 @@ export default {
                             input="password"
                             message={this.error('password')} />
 
-                        <PasswordField 
-                            class="mt-4 md:mt-0 md:ml-2 w-full" 
-                            label="Repeat Password" 
+                        <PasswordField
+                            class="mt-4 md:mt-0 md:ml-2 w-full"
+                            label="Repeat Password"
                             input="password_confirmation" />
                     </div>
 
                     <button type="submit" class="button -primary mt-4 ml-auto">Register</button>
-                </form>                
+                </form>
             </section>
         )
     },

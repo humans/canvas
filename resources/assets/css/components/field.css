@@ -1,14 +1,18 @@
-.field > .label {
-    @apply block mb-1 font-semibold;
+.field {
+    > .label {
+        @apply .block .mb-1 .font-semibold;
+    }
+
+    > .input {
+        @apply .w-full .py-2 .px-1 .border .rounded;
+    }
+
+    > .message {
+        @apply .text-grey-dark;
+    }
 }
 
-.field > .input {
-    @apply w-full py-2 px-1 border rounded;
-}
-
-.field > .message {
-    @apply text-grey-dark;
-}
-
-.field.-errors > .input {
+.field.-errors {
+    > .input {
+    }
 }

@@ -1,16 +1,16 @@
 /** Header **/
-.app-header .wrapper {
-    @apply flex items-center py-8;
-}
+.app-header > .wrapper {
+    @apply .flex .items-center .py-8;
 
-.app-header .wrapper > .brand {
-    @apply ms-xl;
+    > .brand {
+        @apply .ms-xl;
 
-    a {
-        @apply text-black no-underline;
-    }
+        a {
+            @apply .text-black .no-underline;
+        }
 
-    a:hover {
-        @apply text-blue;
+        a:hover {
+            @apply .text-blue;
+        }
     }
 }

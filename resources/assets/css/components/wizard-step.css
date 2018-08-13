@@ -1,0 +1,5 @@
+.wizard-step {
+    > .title {
+        @apply mb-1;
+    }
+}

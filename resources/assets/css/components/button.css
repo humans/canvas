@@ -3,8 +3,8 @@
     --button-bg:         config('colors.transparent');
     --button-text:       config('colors.grey-darker');
 
-    @apply no-underline font-semibold;
-    @apply border rounded px-6 py-3 ms-sm uppercase tracking-wide;
+    @apply .no-underline .font-semibold
+           .border .rounded .px-6 .py-3 .ms-sm .uppercase .tracking-wide;
 
     border-color:     var(--button-border);
     background-color: var(--button-bg);
@@ -12,7 +12,7 @@
 }
 
 .button[disabled] {
-    @apply opacity-50;
+    @apply .opacity-50;
 }
 
 .button:hover {

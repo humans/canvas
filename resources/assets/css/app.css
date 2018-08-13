@@ -52,7 +52,8 @@
 
 @import 'components/button';
 @import 'components/field';
-@import 'components/register';
+@import 'components/form-wizard';
+@import 'components/wizard-step';
 
 /*
 |--------------------------------------------------------------------------

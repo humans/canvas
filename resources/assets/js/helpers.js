@@ -14,16 +14,15 @@ export const tap = (object) => {
 };
 
 /**
- * An easier way to render JSX stuff without wrapping a method
- * around the templates.
+ * Return the value if the conditional provided passes.
  *
  * @param {Boolean} conditional
  * @param {*} template
  */
-export const renderIf = (conditional, template) => {
+export const when = (conditional, thing) => {
     if (! conditional)  {
         return null
     }
 
-    return template
+    return thing 
 }
