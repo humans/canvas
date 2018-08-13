@@ -6,12 +6,12 @@ export default {
 
     render(h) {
         return (
-            <section class="wizard-step user-profile">
+            <section class="wizard-step user-profile-step">
                 <h1 class="title">Complete your profile</h1>
 
-                <p class="text-grey-darker">Just one more step before you're in!</p>
+                <p class="lead">Just one more step before you're in!</p>
 
-                <form class="mt-4 flex flex-col" method="POST" action="/register">
+                <form class="form" method="POST" action="/register">
                     <input type="hidden" name="_token" value={window.App.csrfToken} />
 
                     <TextField
@@ -27,7 +27,7 @@ export default {
                         message={this.error('username')}
                         value={this.value('username')} />
 
-                    <div class="password-fields flex flex-col md:flex-row md:justify-between md:mt-4">
+                    <div class="password-fields">
                         <PasswordField
                             class="mt-4 md:mt-0 md:mr-2 w-full"
                             label="Password"

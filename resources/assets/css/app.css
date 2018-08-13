@@ -55,6 +55,8 @@
 @import 'components/form-wizard';
 @import 'components/wizard-step';
 
+@import 'components/user-profile-step';
+
 /*
 |--------------------------------------------------------------------------
 | Tailwind Utilities

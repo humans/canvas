@@ -1,6 +1,6 @@
+import { when } from '../../helpers.js' 
 import ConfirmEmailStep from './ConfirmEmailStep.js'
 import UserProfileStep from './UserProfileStep.js'
-import { when } from '../../helpers.js' 
 
 export default {
     name: 'RegisterFormWizard',
@@ -9,13 +9,11 @@ export default {
         return (
             <section class="form-wizard">
                 <div class="wrapper max-w-sm mt-8">
-                    {when(
-                        ! this.showProfileForm,
+                    {when(! this.showProfileForm,
                         <ConfirmEmailStep email={this.email} onSuccess={this.next} />
                     )}
 
-                    {when(
-                        this.showProfileForm,
+                    {when(this.showProfileForm,
                         <UserProfileStep errors={this.errors} old={this.old} />
                     )}
                 </div>
