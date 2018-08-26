@@ -101,22 +101,6 @@ return [
 
     'custom' => [
 
-        'login' => [
-            'required' => 'Enter your username or email address.',
-            'exists'   => 'The :login is not in our database.',
-        ],
-
-        'email' => [
-            'required' => 'Enter your email address.',
-            'exists'   => 'That email address is not in our records.',
-        ],
-
-        'password' => [
-            'required' => 'Enter your password.',
-        ],
-
-        'username' => 'Some invalid message',
-
     ],
 
     /*

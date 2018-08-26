@@ -4,7 +4,7 @@ namespace App;
 
 class Model extends \Illuminate\Database\Eloquent\Model
 {
-    use HasFactories;
+    use Concerns\HasFactories;
 
     protected $guarded = [];
 }

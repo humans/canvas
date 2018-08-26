@@ -12,10 +12,6 @@ class AppServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         require_once app_path('helpers.php');
 
-        view()->composer('*', function ($view) {
-            $view->with('me', auth()->user());
-        });
-
         Horizon::auth(function ($request) {
             return optional($request->user())->isAdmin();
         });

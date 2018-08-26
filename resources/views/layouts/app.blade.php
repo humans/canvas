@@ -19,7 +19,7 @@
         <script>
             window.App = window.Laravel = {!! json_encode([
                 'csrfToken'  => csrf_token(),
-                'hasSession' => !! $me,
+                'hasSession' => !! auth()->user(),
                 'pusher' => [
                     'key'     => config('broadcasting.connections.pusher.key'),
                     'cluster' => config('broadcasting.connections.pusher.options.cluster'),
@@ -38,7 +38,7 @@
 
             @impersonating
             <section class="wrapper [ ms-sm text-grey-darker ]">
-                <p>@lang('messages.impersonation_notice', ['name' => $me->name])</p>
+                <p>@lang('messages.impersonation_notice', ['name' => auth()->user()->name])</p>
             </section>
             @endImpersonating
         </main>

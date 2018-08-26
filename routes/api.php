@@ -14,5 +14,3 @@
 Route::middleware('auth:api')->get('me', function () {
     return request()->user();
 });
-
-Route::post('confirm-email', 'ConfirmEmailController')->name('email.confirm');

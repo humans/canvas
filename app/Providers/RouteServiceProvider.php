@@ -10,6 +10,8 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
 
     public function boot()
     {
+        //
+
         parent::boot();
     }
 
@@ -18,8 +20,6 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-
-        $this->mapAdminRoutes();
     }
 
     protected function mapWebRoutes()
@@ -36,14 +36,5 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
              ->namespace($this->namespace . "\\Api")
              ->as('api.')
              ->group(base_path('routes/api.php'));
-    }
-
-    protected function mapAdminRoutes()
-    {
-        Route::prefix('admin')
-            ->middleware('web', 'admin')
-            ->namespace($this->namespace . '\Admin')
-            ->as('admin.')
-            ->group(base_path('routes/admin.php'));
     }
 }

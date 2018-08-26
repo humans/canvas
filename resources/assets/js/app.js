@@ -39,6 +39,6 @@ const app = new Vue({
 
     el: '#app',
 
-    mixins: [ PassportExample ],
+    mixins: [PassportExample],
 
 })

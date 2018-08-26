@@ -1,5 +1,5 @@
 import expect from 'expect'
-import { renderIf, tap } from '../../resources/assets/js/helpers.js'
+import { when, tap } from '../../resources/assets/js/helpers.js'
 
 describe('tap', () => {
 
@@ -16,14 +16,14 @@ describe('tap', () => {
 
 })
 
-describe('renderIf', () => {
+describe('when', () => {
 
     it('returns nothing when the conditional is not met', () => {
-        expect(renderIf(false, 'no')).toBe(null)
+        expect(when(false, 'no')).toBe(null)
     })
 
     it('returns the second parameter when the condition is met', () => {
-        expect(renderIf(true, 'yes')).toBe('yes')
+        expect(when(true, 'yes')).toBe('yes')
     })
 
 })

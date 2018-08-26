@@ -24,5 +24,5 @@ export const when = (conditional, thing) => {
         return null
     }
 
-    return thing 
+    return thing
 }
