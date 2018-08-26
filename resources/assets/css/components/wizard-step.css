@@ -1,9 +1,0 @@
-.wizard-step {
-    > .title {
-        @apply .mb-1;
-    }
-
-    > .form {
-        @apply .flex .flex-col .mt-4;
-    }
-}

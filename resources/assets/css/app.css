@@ -16,6 +16,7 @@
 
 @import "tailwindcss/preflight";
 
+
 /*
 |--------------------------------------------------------------------------
 | Base Configuration
@@ -29,6 +30,7 @@
 @import 'base/boilerplate';
 @import 'base/typography';
 
+
 /*
 |--------------------------------------------------------------------------
 | Layouts
@@ -41,6 +43,7 @@
 @import 'layouts/header';
 @import 'layouts/footer';
 
+
 /*
 |--------------------------------------------------------------------------
 | Components
@@ -52,10 +55,7 @@
 
 @import 'components/button';
 @import 'components/field';
-@import 'components/form-wizard';
-@import 'components/wizard-step';
 
-@import 'components/user-profile-step';
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +71,7 @@
 */
 
 @import "tailwindcss/utilities";
+
 
 /**
 |--------------------------------------------------------------------------
